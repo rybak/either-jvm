@@ -64,9 +64,11 @@ public abstract class Either<A, B> {
 	/**
 	 * Lift a value into {@code Either<A>}.
 	 * <p>
-	 * Implementation of the function {@code pure} of the {@code Applicative} abstraction for {@code Either<A>}.
+	 * Implementation of the function {@code pure} of the
+	 * <a href="https://hackage.haskell.org/package/base/docs/src/GHC-Base.html#Applicative">Applicative</a> abstraction
+	 * for {@code Either<E>}.
 	 */
-	public static <A, B> Either<A, B> pure(B a) {
+	public static <E, A> Either<E, A> pure(A a) {
 		return right(a);
 	}
 
