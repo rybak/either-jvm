@@ -226,7 +226,7 @@ public abstract class Either<A, B> {
 		}
 	}
 
-	public static class Right<A, B> extends Either<A, B> {
+	public static final class Right<A, B> extends Either<A, B> {
 		private final B b;
 
 		private Right(B b) {
