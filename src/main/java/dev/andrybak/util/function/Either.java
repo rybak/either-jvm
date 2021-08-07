@@ -43,6 +43,24 @@ public abstract class Either<A, B> {
 	}
 
 	/**
+	 * Implementation of the {@code map} function of the Functor abstraction for {@code Either<E>}.
+	 */
+	public static <E, A, B> Either<E, B> map(Function<A, B> f, Either<E, A> e) {
+		return e.match(
+				Left::new,
+				b -> new Right<>(f.apply(b))
+		);
+	}
+
+	/**
+	 * @implNote second implementation of function {@code map} is needed because Java doesn't support partial
+	 * application of functions.
+	 */
+	public static <E, A, B> Function<Either<E, A>, Either<E, B>> map(Function<A, B> f) {
+		return e -> map(f, e);
+	}
+
+	/**
 	 * Java implementation of
 	 * <a href="https://hackage.haskell.org/package/base-4.15.0.0/docs/Prelude.html#v:either">Haskell function
 	 * {@code either}</a>. Useful for usage with {@link java.util.stream.Stream} API.
