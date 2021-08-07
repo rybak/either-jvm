@@ -17,10 +17,16 @@
  * along with Either-JVM.  If not, see <https://www.gnu.org/licenses/>.
  */
 plugins {
-	java
+	`java-library`
 }
 
 version = "1.0"
+
+java {
+	toolchain {
+		languageVersion.set(JavaLanguageVersion.of(8))
+	}
+}
 
 dependencies {
 	testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
