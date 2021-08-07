@@ -12,14 +12,19 @@ is a very useful data type.  There are several implementations of it for JVM:
 
 - https://www.javadoc.io/doc/io.vavr/vavr/latest/io/vavr/control/Either.html
 - https://github.com/functionaljava/functionaljava/blob/series/5.x/core/src/main/java/fj/data/Either.java
+- https://github.com/meoyawn/kotlin-either
 
-However they have various properties, which make their usage inconvenient or
+However, they have various properties, which make their usage inconvenient or
 cumbersome:
 
 - don't include convenient structural pattern matching facilities for their
   `Either` type
 - don't use Java 8 functional interfaces directly
 - are included as part of very big unwieldy functional programming library
+- don't provide APIs with conventional naming structure
+
+Either-JVM is also a personal exercise in library writing and programming
+language learning.
 
 ## Features
 
@@ -39,3 +44,7 @@ Compatible with Java 17. Utilizes sealed classes feature which was introduced to
 Java in [JEP 409](https://openjdk.java.net/jeps/409). Can be used together with
 pattern matching in `switch` statements and expressions, which was introduced as
 a preview feature in [JEP 406](https://openjdk.java.net/jeps/406).
+
+## `either-kotlin`
+
+_TBD_
