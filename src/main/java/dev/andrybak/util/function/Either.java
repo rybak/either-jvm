@@ -43,6 +43,30 @@ public abstract class Either<A, B> {
 	}
 
 	/**
+	 * Java implementation of
+	 * <a href="https://hackage.haskell.org/package/base-4.15.0.0/docs/Prelude.html#v:either">Haskell function
+	 * {@code either}</a>. Useful for usage with {@link java.util.stream.Stream} API.
+	 *
+	 * @param f   function to apply to {@link Left}
+	 * @param g   function to apply to {@link Right}
+	 * @param <A> type for {@link Left}
+	 * @param <B> type for {@link Right}
+	 * @param <C> return type of functions
+	 * @return function which takes an {@link Either} and returns result of applying a corresponding function to
+	 */
+	public static <A, B, C> Function<Either<A, B>, C> either(Function<A, C> f, Function<B, C> g) {
+		return e -> e.match(f, g);
+	}
+
+	/**
+	 * @implNote second implementation of function {@code either} is needed because Java doesn't support partial
+	 * application of functions.
+	 */
+	public static <A, B, C> C either(Function<A, C> f, Function<B, C> g, Either<A, B> e) {
+		return e.match(f, g);
+	}
+
+	/**
 	 * Pattern match on this {@code Either} and return result of applying the corresponding function.
 	 *
 	 * @param f   function to apply to {@link Left}
