@@ -18,6 +18,7 @@
  */
 package dev.andrybak.util.function;
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 /**
@@ -58,6 +59,69 @@ public abstract class Either<A, B> {
 	 */
 	public static <E, A, B> Function<Either<E, A>, Either<E, B>> map(Function<A, B> f) {
 		return e -> map(f, e);
+	}
+
+	/**
+	 * Lift a value into {@code Either<A>}.
+	 * <p>
+	 * Implementation of the function {@code pure} of the {@code Applicative} abstraction for {@code Either<A>}.
+	 */
+	public static <A, B> Either<A, B> pure(B a) {
+		return right(a);
+	}
+
+	/**
+	 * Sequential application. Part of the Applicative abstraction for {@code Either<E>}.
+	 *
+	 * @param ef  {@code Either} of function
+	 * @param ea  {@code Either} of possible value of type {@code A}
+	 * @param <E> type of {@link Left}
+	 * @param <A> initial type of {@link Right}
+	 * @param <B> type of {@link Right} after applying the function.
+	 */
+	public static <E, A, B> Either<E, B> sequential(Either<E, Function<A, B>> ef, Either<E, A> ea) {
+		return ef.match(
+				Left::new,
+				f -> map(f, ea)
+		);
+	}
+
+	/**
+	 * @implNote second implementation of function {@code sequential} is needed because Java doesn't support partial
+	 * application of functions.
+	 */
+	public static <E, A, B> Function<Either<E, A>, Either<E, B>> sequential(Either<E, Function<A, B>> ef) {
+		return ea -> ef.match(
+				Left::new,
+				f -> map(f, ea)
+		);
+	}
+
+	/**
+	 * Lift a binary function to {@code Either<E>}.
+	 */
+	public static <E, A, B, C> Either<E, C> liftA2(BiFunction<A, B, C> f, Either<E, A> ea, Either<E, B> eb) {
+		return ea.match(
+				Left::new,
+				rightA -> eb.match(
+						Left::new,
+						rightB -> new Right<>(f.apply(rightA, rightB))
+				)
+		);
+	}
+
+	/**
+	 * @implNote second implementation of function {@code liftA2} is needed because Java doesn't support partial
+	 * application of functions.
+	 */
+	public static <E, A, B, C> BiFunction<Either<E, A>, Either<E, B>, Either<E, C>> liftA2(BiFunction<A, B, C> f) {
+		return (ea, eb) -> ea.match(
+				Left::new,
+				rightA -> eb.match(
+						Left::new,
+						rightB -> new Right<>(f.apply(rightA, rightB))
+				)
+		);
 	}
 
 	/**
