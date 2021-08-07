@@ -125,6 +125,16 @@ public abstract class Either<A, B> {
 	}
 
 	/**
+	 * Implementation of the bind function of the Monad abstraction for {@code Either<E>}.
+	 */
+	public static <E, A, B> Either<E, B> bind(Either<E, A> e, Function<A, Either<E, B>> f) {
+		return e.match(
+				Left::new,
+				f
+		);
+	}
+
+	/**
 	 * Java implementation of
 	 * <a href="https://hackage.haskell.org/package/base-4.15.0.0/docs/Prelude.html#v:either">Haskell function
 	 * {@code either}</a>. Useful for usage with {@link java.util.stream.Stream} API.
