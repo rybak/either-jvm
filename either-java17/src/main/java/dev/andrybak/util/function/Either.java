@@ -171,6 +171,14 @@ public sealed abstract class Either<A, B> permits Left, Right {
 		return e -> e.match(f, g);
 	}
 
+	/**
+	 * @implNote second implementation of function {@code either} is needed because Java doesn't support partial
+	 * application of functions.
+	 */
+	public static <A, B, C> C either(Function<A, C> f, Function<B, C> g, Either<A, B> e) {
+		return e.match(f, g);
+	}
+
 	public static <A, B> Stream<A> lefts(Stream<Either<A, B>> eitherStream) {
 		return eitherStream
 				.filter(e -> e.match(left -> true, right -> false))
@@ -191,14 +199,6 @@ public sealed abstract class Either<A, B> permits Left, Right {
 						},
 						Function.identity()
 				));
-	}
-
-	/**
-	 * @implNote second implementation of function {@code either} is needed because Java doesn't support partial
-	 * application of functions.
-	 */
-	public static <A, B, C> C either(Function<A, C> f, Function<B, C> g, Either<A, B> e) {
-		return e.match(f, g);
 	}
 
 	/**
