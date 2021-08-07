@@ -16,10 +16,21 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
  */
-group = "dev.andrybak"
+plugins {
+	java
+}
 
-subprojects {
-	repositories {
-		mavenCentral()
-	}
+version = "1.0"
+
+dependencies {
+	testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
+	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+}
+
+tasks.withType<JavaCompile> {
+	options.encoding = "UTF-8"
+}
+
+tasks.getByName<Test>("test") {
+	useJUnitPlatform()
 }
