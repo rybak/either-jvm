@@ -24,6 +24,12 @@ import java.util.function.Function;
 /**
  * Java implementation of functional abstraction {@code Either}. Inspired by
  * <a href="https://hackage.haskell.org/package/base/docs/Prelude.html#t:Either">Haskell's type {@code Either}</a>.
+ * <p>
+ * Note, that for implementations of functions for various Haskell type classes, we use a non-existent notation of
+ * partially types for generics. The type of left values ({@code <A>} of the generics of the class) is fixed in these
+ * type classes, while type of right values ({@code <B>}) changes. For that purpose, a fixed {@code <E>} type value is
+ * used in the documentation, like so: {@code Either<E>}.
+ * </p>
  *
  * @param <A> type for {@link Left}
  * @param <B> type for {@link Right}
@@ -44,7 +50,9 @@ public abstract class Either<A, B> {
 	}
 
 	/**
-	 * Implementation of the {@code map} function of the Functor abstraction for {@code Either<E>}.
+	 * Implementation of the {@code map} function of the
+	 * <a href="https://hackage.haskell.org/package/base/docs/src/GHC-Base.html#Functor">Functor</a> abstraction for
+	 * {@code Either<E>}.
 	 */
 	public static <E, A, B> Either<E, B> map(Function<A, B> f, Either<E, A> e) {
 		return e.match(
@@ -73,7 +81,9 @@ public abstract class Either<A, B> {
 	}
 
 	/**
-	 * Sequential application. Part of the Applicative abstraction for {@code Either<E>}.
+	 * Sequential application. Part of the implementation of the
+	 * <a href="https://hackage.haskell.org/package/base/docs/src/GHC-Base.html#Applicative">Applicative</a> abstraction
+	 * for {@code Either<E>}.
 	 *
 	 * @param ef  {@code Either} of function
 	 * @param ea  {@code Either} of possible value of type {@code A}
@@ -100,7 +110,9 @@ public abstract class Either<A, B> {
 	}
 
 	/**
-	 * Lift a binary function to {@code Either<E>}.
+	 * Lift a binary function to {@code Either<E>}. Part of the implementation of the
+	 * <a href="https://hackage.haskell.org/package/base/docs/src/GHC-Base.html#Applicative">Applicative</a> abstraction
+	 * for {@code Either<E>}.
 	 */
 	public static <E, A, B, C> Either<E, C> liftA2(BiFunction<A, B, C> f, Either<E, A> ea, Either<E, B> eb) {
 		return ea.match(
@@ -127,7 +139,9 @@ public abstract class Either<A, B> {
 	}
 
 	/**
-	 * Implementation of the bind function of the Monad abstraction for {@code Either<E>}.
+	 * Implementation of the bind function of the
+	 * <a href="https://hackage.haskell.org/package/base/docs/src/GHC-Base.html#Monad">Monad</a>
+	 * abstraction for {@code Either<E>}.
 	 */
 	public static <E, A, B> Either<E, B> bind(Either<E, A> e, Function<A, Either<E, B>> f) {
 		return e.match(
