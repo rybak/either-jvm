@@ -23,7 +23,7 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 /**
- * Java implementation of functional programming abstraction {@code Either} for Java 8.
+ * Java implementation of functional programming abstraction {@code Either} for Java 17.
  * <p>
  * The most basic and most important part of API of this class is instance method {@link #match(Function, Function)}.
  * It allows to structurally pattern match on the left and right values stored in objects of type {@code Either}.
