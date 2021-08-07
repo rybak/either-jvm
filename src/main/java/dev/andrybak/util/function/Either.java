@@ -25,6 +25,10 @@ import java.util.function.Function;
  * Java implementation of functional abstraction {@code Either}. Inspired by
  * <a href="https://hackage.haskell.org/package/base/docs/Prelude.html#t:Either">Haskell's type {@code Either}</a>.
  * <p>
+ * The most basic and most important part of API of this class is instance method {@link #match(Function, Function)}.
+ * It allows to structurally pattern match on the left and right values stored in objects of type {@code Either}.
+ * </p>
+ * <p>
  * Note, that for implementations of functions for various Haskell type classes, we use a non-existent notation of
  * partially types for generics. The type of left values ({@code <A>} of the generics of the class) is fixed in these
  * type classes, while type of right values ({@code <B>}) changes. For that purpose, a fixed {@code <E>} type value is
