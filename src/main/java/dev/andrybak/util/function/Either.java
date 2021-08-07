@@ -20,6 +20,7 @@ package dev.andrybak.util.function;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.stream.Stream;
 
 /**
  * Java implementation of functional programming abstraction {@code Either}.
@@ -171,6 +172,28 @@ public abstract class Either<A, B> {
 	 */
 	public static <A, B, C> Function<Either<A, B>, C> either(Function<A, C> f, Function<B, C> g) {
 		return e -> e.match(f, g);
+	}
+
+	public static <A, B> Stream<A> lefts(Stream<Either<A, B>> eitherStream) {
+		return eitherStream
+				.filter(e -> e.match(left -> true, right -> false))
+				.map(either(
+						Function.identity(),
+						right -> {
+							throw new IllegalStateException("Got a right value after filtering");
+						}
+				));
+	}
+
+	public static <A, B> Stream<B> rights(Stream<Either<A, B>> eitherStream) {
+		return eitherStream
+				.filter(e -> e.match(left -> false, right -> true))
+				.map(either(
+						left -> {
+							throw new IllegalStateException("Got a left value after filtering");
+						},
+						Function.identity()
+				));
 	}
 
 	/**
