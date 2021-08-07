@@ -23,7 +23,7 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 /**
- * Java implementation of functional programming abstraction {@code Either} for Java 17.
+ * Java implementation of functional programming abstraction {@code Either} for Java 17 using sealed classes feature.
  * <p>
  * The most basic and most important part of API of this class is instance method {@link #match(Function, Function)}.
  * It allows to structurally pattern match on the left and right values stored in objects of type {@code Either}.
@@ -42,11 +42,8 @@ import java.util.stream.Stream;
  * @param <A> type for {@link Left}
  * @param <B> type for {@link Right}
  */
-public abstract class Either<A, B> {
-	/**
-	 * Private to prevent inheritance from outside.
-	 */
-	private Either() {
+public sealed abstract class Either<A, B> permits Left, Right {
+	Either() {
 	}
 
 	public static <A, B> Either<A, B> left(A a) {
@@ -213,29 +210,4 @@ public abstract class Either<A, B> {
 	 */
 	public abstract <R> R match(Function<A, R> f, Function<B, R> g);
 
-	public static final class Left<A, B> extends Either<A, B> {
-		private final A a;
-
-		private Left(A a) {
-			this.a = a;
-		}
-
-		@Override
-		public <R> R match(Function<A, R> f, Function<B, R> g) {
-			return f.apply(a);
-		}
-	}
-
-	public static final class Right<A, B> extends Either<A, B> {
-		private final B b;
-
-		private Right(B b) {
-			this.b = b;
-		}
-
-		@Override
-		public <R> R match(Function<A, R> f, Function<B, R> g) {
-			return g.apply(b);
-		}
-	}
 }

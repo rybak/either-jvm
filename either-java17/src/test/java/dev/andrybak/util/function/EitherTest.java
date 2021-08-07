@@ -28,14 +28,14 @@ public class EitherTest {
 	void testThatLeftCanBeConstructed() {
 		Either<String, Integer> leftValue = Either.left("Left value");
 		assertNotNull(leftValue);
-		assertEquals(Either.Left.class, leftValue.getClass());
+		assertEquals(Left.class, leftValue.getClass());
 	}
 
 	@Test
 	void testThatRightCanBeConstructed() {
 		Either<String, Integer> rightValue = Either.right(42);
 		assertNotNull(rightValue);
-		assertEquals(Either.Right.class, rightValue.getClass());
+		assertEquals(Right.class, rightValue.getClass());
 	}
 
 	@Test
