@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Either-JVM.  If not, see <https://www.gnu.org/licenses/>.
  */
-package dev.andrybak.util.function;
+package dev.andrybak.util.function.java17;
 
 import org.junit.jupiter.api.Test;
 
