@@ -55,4 +55,24 @@ public class EitherTest {
 				b -> "Right value " + b
 		));
 	}
+
+	@Test
+	void testThatLeftCanBeMatchedByEitherFunction() {
+		Either<String, Integer> leftValue = Either.left("bar");
+		assertEquals("foobar", Either.either(
+				a -> "foo" + a,
+				b -> "Right value " + b,
+				leftValue
+		));
+	}
+
+	@Test
+	void testThatRightCanBeMatchedByEitherFunction() {
+		Either<String, Integer> rightValue = Either.right(42);
+		assertEquals("Right value 42", Either.either(
+				a -> "foo" + a,
+				b -> "Right value " + b,
+				rightValue
+		));
+	}
 }
