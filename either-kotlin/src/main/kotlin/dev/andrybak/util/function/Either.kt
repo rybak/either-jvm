@@ -18,7 +18,6 @@
  */
 package dev.andrybak.util.function
 
-// TODO figure out Kotlin's generics https://kotlinlang.org/docs/generics.html
 sealed class Either<A, B> {
 	data class Left<A, B>(val a: A) : Either<A, B>()
 	data class Right<A, B>(val b: B) : Either<A, B>()
