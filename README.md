@@ -29,7 +29,7 @@ language learning.
 ## Features
 
 1. Convenient structural pattern matching.
-2. For Java libraries – interoperation with `java.util.function` and
+2. For Java libraries – interoperation with `java.util.function.*` and
    `java.util.Stream` APIs.
 3. Implementations of functional programming abstractions: Functor, Applicative,
    and Monad for type `Either`.
