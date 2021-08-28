@@ -11,12 +11,21 @@
 - Add either-java16 or whatever version with sealed classes (possibly experimental)
     * [ ] https://openjdk.java.net/jeps/406 -- pattern matching is preview feature in Java 17
     * [ ] Wait until JDK with needed flag is available in Ubuntu https://stackoverflow.com/q/68702414/1083697
+- either-java8 JSON
+    > Since we'll make classes Serialiazeable, there should be a JSON serialization implementation for popular JSON libraries.
+    * [ ] either-java8-gson
+    * [ ] either-java8-jackson
+    * [ ] ???
+- kotlin-mpp
+    * [ ] https://kotlinlang.org/docs/mpp-create-lib.html
+    * [ ] https://kotlinlang.org/docs/multiplatform-library.html
 
 ## Doing
 
 - Kotlin tests
 - Kotlin: data class?
     * [ ] Are data classes a good idea for Left and Right? Left#a and Right#b seemingly make it too attached to <A, B> type parameter naming
+    * [ ] are data classes with all fields private  possible?
 
 ## Done
 
