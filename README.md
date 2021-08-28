@@ -6,8 +6,8 @@ form of a JVM class.
 
 ## Motivation
 
-Experience of the functional programming experience, Haskell in particular, has
-shown that [Either](https://hackage.haskell.org/package/base/docs/Data-Either.html)
+Experience of people using functional programming, with Haskell in particular,
+has shown that [Either](https://hackage.haskell.org/package/base/docs/Data-Either.html)
 is a very useful data type.  There are several implementations of it for JVM:
 
 - https://www.javadoc.io/doc/io.vavr/vavr/latest/io/vavr/control/Either.html
