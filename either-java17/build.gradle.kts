@@ -24,6 +24,7 @@ version = "0.1"
 
 java {
 	toolchain {
+		// TODO switch to version 17 proper after it will be released
 		languageVersion.set(JavaLanguageVersion.of(16))
 	}
 }
