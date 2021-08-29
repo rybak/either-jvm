@@ -29,4 +29,10 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib"))
+    implementation("org.junit.jupiter:junit-jupiter:5.7.2")
+    testImplementation(kotlin("test"))
+}
+
+tasks.named<Test>("test") {
+    useJUnitPlatform()
 }
