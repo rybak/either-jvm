@@ -41,10 +41,16 @@ public abstract class Either<A, B> {
 	private Either() {
 	}
 
+	/**
+	 * Create a {@link Left} with given value of type {@code A}.
+	 */
 	public static <A, B> Either<A, B> left(A a) {
 		return new Left<>(a);
 	}
 
+	/**
+	 * Create a {@link Right} with given value of type {@code B}.
+	 */
 	public static <A, B> Either<A, B> right(B b) {
 		return new Right<>(b);
 	}
@@ -59,13 +65,22 @@ public abstract class Either<A, B> {
 	 * @param <A> type for {@link Left}
 	 * @param <B> type for {@link Right}
 	 * @param <C> return type of functions
-	 * @return function which takes an {@link Either} and returns result of applying a corresponding function to
+	 * @return function which takes an {@link Either} and returns result of applying the function corresponding to its
+	 * type.
 	 */
 	public static <A, B, C> Function<Either<A, B>, C> either(Function<A, C> f, Function<B, C> g) {
 		return e -> e.match(f, g);
 	}
 
 	/**
+	 * Apply one of given functions to given {@link Either} value, depending on its type.
+	 *
+	 * @param f   function to apply to {@link Left}
+	 * @param g   function to apply to {@link Right}
+	 * @param <A> type for {@link Left}
+	 * @param <B> type for {@link Right}
+	 * @param <C> return type of functions
+	 * @return result of applying one of the given functions to given {@link Either} value.
 	 * @implNote second implementation of function {@code either} is needed because Java doesn't support partial
 	 * application of functions.
 	 */
