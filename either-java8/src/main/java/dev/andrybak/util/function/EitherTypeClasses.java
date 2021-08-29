@@ -58,8 +58,8 @@ public class EitherTypeClasses {
 	 * Lift a value into {@code Either<A>}.
 	 * <p>
 	 * Implementation of the function {@code pure} of the
-	 * <a href="https://hackage.haskell.org/package/base/docs/src/GHC-Base.html#Applicative">Applicative</a> abstraction
-	 * for {@code Either<E>}.
+	 * <a href="https://hackage.haskell.org/package/base/docs/src/GHC-Base.html#Applicative">Applicative</a>
+	 * abstraction for {@code Either<E>}.
 	 */
 	public static <E, A> Either<E, A> pure(A a) {
 		return Either.right(a);
@@ -67,8 +67,8 @@ public class EitherTypeClasses {
 
 	/**
 	 * Sequential application. Part of the implementation of the
-	 * <a href="https://hackage.haskell.org/package/base/docs/src/GHC-Base.html#Applicative">Applicative</a> abstraction
-	 * for {@code Either<E>}.
+	 * <a href="https://hackage.haskell.org/package/base/docs/src/GHC-Base.html#Applicative">Applicative</a>
+	 * abstraction for {@code Either<E>}.
 	 *
 	 * @param ef  {@code Either} of function
 	 * @param ea  {@code Either} of possible value of type {@code A}
@@ -96,8 +96,8 @@ public class EitherTypeClasses {
 
 	/**
 	 * Lift a binary function to {@code Either<E>}. Part of the implementation of the
-	 * <a href="https://hackage.haskell.org/package/base/docs/src/GHC-Base.html#Applicative">Applicative</a> abstraction
-	 * for {@code Either<E>}.
+	 * <a href="https://hackage.haskell.org/package/base/docs/src/GHC-Base.html#Applicative">Applicative</a>
+	 * abstraction for {@code Either<E>}.
 	 */
 	public static <E, A, B, C> Either<E, C> liftA2(BiFunction<A, B, C> f, Either<E, A> ea, Either<E, B> eb) {
 		return ea.match(
