@@ -21,6 +21,11 @@ package dev.andrybak.util.function
 sealed class Either<A, B> {
 	data class Left<A, B>(val a: A) : Either<A, B>()
 	data class Right<A, B>(val b: B) : Either<A, B>()
+
+	companion object {
+		fun <A, B> left(a: A): Either<A, B> = Left(a)
+		fun <A, B> right(b: B): Either<A, B> = Right(b)
+	}
 }
 
 /**
