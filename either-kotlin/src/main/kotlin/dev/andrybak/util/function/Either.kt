@@ -27,8 +27,8 @@ package dev.andrybak.util.function
  * @param B type for [Right]
  */
 sealed class Either<A, B> {
-	data class Left<A, B>(val a: A) : Either<A, B>()
-	data class Right<A, B>(val b: B) : Either<A, B>()
+	data class Left<A, B>(val leftValue: A) : Either<A, B>()
+	data class Right<A, B>(val rightValue: B) : Either<A, B>()
 
 	companion object {
 		/**
@@ -55,8 +55,8 @@ sealed class Either<A, B> {
  */
 fun <A, B, C> either(f: (A) -> C, g: (B) -> C, e: Either<A, B>): C {
 	return when (e) {
-		is Either.Left -> f(e.a)
-		is Either.Right -> g(e.b)
+		is Either.Left -> f(e.leftValue)
+		is Either.Right -> g(e.rightValue)
 	}
 }
 
@@ -74,8 +74,8 @@ fun <A, B, C> either(f: (A) -> C, g: (B) -> C, e: Either<A, B>): C {
 fun <A, B, C> either(f: (A) -> C, g: (B) -> C): (Either<A, B>) -> C {
 	return { e ->
 		when (e) {
-			is Either.Left -> f(e.a)
-			is Either.Right -> g(e.b)
+			is Either.Left -> f(e.leftValue)
+			is Either.Right -> g(e.rightValue)
 		}
 	}
 }

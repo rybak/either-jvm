@@ -25,8 +25,8 @@ internal class EitherTest {
 		assertEquals(
 			"foobar",
 			when (leftValue) {
-				is Either.Left -> "foo" + leftValue.a
-				is Either.Right -> "Right value " + leftValue.b
+				is Either.Left -> "foo" + leftValue.leftValue
+				is Either.Right -> "Right value " + leftValue.rightValue
 			}
 		)
 	}
@@ -37,8 +37,8 @@ internal class EitherTest {
 		assertEquals(
 			"Right value 42",
 			when (rightValue) {
-				is Either.Left -> "foo" + rightValue.a
-				is Either.Right -> "Right value " + rightValue.b
+				is Either.Left -> "foo" + rightValue.leftValue
+				is Either.Right -> "Right value " + rightValue.rightValue
 			}
 		)
 	}
