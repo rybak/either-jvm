@@ -19,12 +19,16 @@
     * [ ] Wait until Java 17 is released
     * [ ] Wait until JDK with needed flag is available in Ubuntu https://stackoverflow.com/q/68702414/1083697
     * [ ] https://openjdk.java.net/jeps/406 -- pattern matching is preview feature in Java 17
+- add code samples
+    * [ ] code samples in README
+    * [ ] code samples as separate subproject
 
 ## Doing
 
 - Kotlin: data class?
     * [ ] Are data classes a good idea for Left and Right? Left#a and Right#b seemingly make it too attached to <A, B> type parameter naming
     * [ ] are data classes with all fields private  possible?
+    * [ ] data class Left(private val a: A) ???
 
 ## Done
 
