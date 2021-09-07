@@ -22,6 +22,8 @@
 - add code samples
     * [ ] code samples in README
     * [ ] code samples as separate subproject
+- pre-push hook
+    > https://stackoverflow.com/a/61621713/1083697
 
 ## Doing
 
