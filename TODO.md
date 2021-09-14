@@ -1,8 +1,5 @@
 ## To Do
 
-- Gradle: task configuration avoidance
-    > compare how task `test` is configured in kotlin and java versions
-    * [ ] stop using plain `test { ... }` block
 - equals & hashCode & Serializeable
 - Foldable impl
     > https://hackage.haskell.org/package/base-4.15.0.0/docs/src/Data-Foldable.html#Foldable
@@ -29,8 +26,9 @@
 
 ## Doing
 
-- pre-push hook
-    > https://stackoverflow.com/a/61621713/1083697
+- Gradle update
+    * [ ] upgrade junit version
+    * [ ] clean up build script for Kotlin plugin
 
 ## Done
 
@@ -47,3 +45,8 @@
     * [x] can't think of class name for functions `either` -- they are just convenience functions, with slightly different type than match
 - Kotlin tests
 - Javadocs for static factory methods `left` and `right`
+- pre-push hook
+    > https://stackoverflow.com/a/61621713/1083697
+- Gradle: task configuration avoidance
+    > compare how task `test` is configured in kotlin and java versions
+    * [x] stop using plain `test { ... }` block
