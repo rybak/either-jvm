@@ -17,7 +17,7 @@
  * along with Either-JVM.  If not, see <https://www.gnu.org/licenses/>.
  */
 plugins {
-    kotlin("jvm") version "1.4.32"
+    kotlin("jvm") version "1.5.30"
 }
 
 group = "dev.andrybak"
