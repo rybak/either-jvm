@@ -1,6 +1,6 @@
 ## To Do
 
-- equals & hashCode & Serializeable
+- Java 17 EitherStreams
 - Foldable impl
     > https://hackage.haskell.org/package/base-4.15.0.0/docs/src/Data-Foldable.html#Foldable
 - add code samples
@@ -23,12 +23,17 @@
 - kotlin-mpp
     * [ ] https://kotlinlang.org/docs/mpp-create-lib.html
     * [ ] https://kotlinlang.org/docs/multiplatform-library.html
+- Kotlin testing frameworks
+    * [ ] look into https://kotlinlang.org/api/latest/kotlin.test/
+    * [ ] look into https://kotest.io/
 
 ## Doing
 
-- Gradle update
-    * [ ] upgrade junit version
-    * [ ] clean up build script for Kotlin plugin
+- equals & hashCode & Serializable
+    * [x] Serializable
+    * [x] Tests for serialization
+    * [ ] equals & hashCode
+    * [ ] tests for equals & hashCode
 
 ## Done
 
@@ -50,3 +55,6 @@
 - Gradle: task configuration avoidance
     > compare how task `test` is configured in kotlin and java versions
     * [x] stop using plain `test { ... }` block
+- Gradle update/cleanup 2021-09
+    * [x] upgrade junit version
+    * [x] clean up build script for Kotlin plugin
