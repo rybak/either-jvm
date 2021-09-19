@@ -18,6 +18,7 @@
  */
 package dev.andrybak.util.function;
 
+import java.io.Serializable;
 import java.util.function.Function;
 
 /**
@@ -30,11 +31,14 @@ import java.util.function.Function;
  * Inspired by
  * <a href="https://hackage.haskell.org/package/base/docs/Prelude.html#t:Either">Haskell's type {@code Either}</a>.
  * </p>
+ * <p>
+ * If both types {@code A} and {@code B} are {@link Serializable} then {@code Either<A, B>} can be serialized.
+ * </p>
  *
  * @param <A> type for {@link Left}
  * @param <B> type for {@link Right}
  */
-public abstract class Either<A, B> {
+public abstract class Either<A, B> implements Serializable {
 	/**
 	 * Private to prevent inheritance from outside.
 	 */

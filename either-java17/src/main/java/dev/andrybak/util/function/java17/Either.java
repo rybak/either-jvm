@@ -18,6 +18,7 @@
  */
 package dev.andrybak.util.function.java17;
 
+import java.io.Serializable;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.stream.Stream;
@@ -35,6 +36,9 @@ import java.util.stream.Stream;
  * used in the documentation, like so: {@code Either<E>}.
  * </p>
  * <p>
+ * If both types {@code A} and {@code B} are {@link Serializable} then {@code Either<A, B>} can be serialized.
+ * </p>
+ * <p>
  * Inspired by
  * <a href="https://hackage.haskell.org/package/base/docs/Prelude.html#t:Either">Haskell's type {@code Either}</a>.
  * </p>
@@ -42,7 +46,7 @@ import java.util.stream.Stream;
  * @param <A> type for {@link Left}
  * @param <B> type for {@link Right}
  */
-public sealed abstract class Either<A, B> permits Left, Right {
+public sealed abstract class Either<A, B> implements Serializable permits Left, Right {
 	/**
 	 * @implNote Constructor is not private, because {@link Left} and {@link Right} classes are not nested in *
 	 * {@link Either}.
