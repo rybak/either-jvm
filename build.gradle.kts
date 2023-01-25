@@ -23,3 +23,7 @@ subprojects {
 		mavenCentral()
 	}
 }
+
+tasks.wrapper {
+	distributionType = Wrapper.DistributionType.ALL
+}
