@@ -1,5 +1,6 @@
 ## To Do
 
+- Gradle: specify --release for javac
 - Java 17 EitherStreams
 - Foldable impl
     > https://hackage.haskell.org/package/base-4.15.0.0/docs/src/Data-Foldable.html#Foldable
@@ -34,6 +35,11 @@
     * [x] Tests for serialization
     * [ ] equals & hashCode
     * [ ] tests for equals & hashCode
+- MIT License
+    > I've decided that either-jvm isn't worth keeping under LGPL
+    * [ ] figure out SPDX ID stuff
+    * [ ] delete all copyright comments in code
+    * [ ] replace COPYING and LICENSE with MIT license
 
 ## Done
 
@@ -58,3 +64,5 @@
 - Gradle update/cleanup 2021-09
     * [x] upgrade junit version
     * [x] clean up build script for Kotlin plugin
+- Upgrade to Gradle 7.6
+- Upgrade Kotlin Gradle plugin
