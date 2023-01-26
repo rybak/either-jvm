@@ -7,8 +7,7 @@ version = "0.2-SNAPSHOT"
 
 java {
 	toolchain {
-		// TODO switch to version 17 proper after it will be released
-		languageVersion.set(JavaLanguageVersion.of(16))
+		languageVersion.set(JavaLanguageVersion.of(17))
 	}
 }
 
@@ -19,10 +18,8 @@ dependencies {
 
 tasks.withType<JavaCompile> {
 	options.encoding = "UTF-8"
-	options.compilerArgs.addAll(arrayOf("-Xlint:preview", "--enable-preview"))
 }
 
 tasks.getByName<Test>("test") {
 	useJUnitPlatform()
-	jvmArgs("--enable-preview")
 }
