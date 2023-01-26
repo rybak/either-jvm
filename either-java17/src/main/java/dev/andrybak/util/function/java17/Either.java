@@ -23,7 +23,7 @@ import java.util.stream.Stream;
  * </p>
  * <p>
  * Inspired by
- * <a href="https://hackage.haskell.org/package/base/docs/Prelude.html#t:Either">Haskell's type {@code Either}</a>.
+ * <a href="https://hackage.haskell.org/package/base/docs/Data-Either.html">Haskell's type {@code Either}</a>.
  * </p>
  *
  * @param <A> type for {@link Left}
@@ -53,7 +53,7 @@ public sealed abstract class Either<A, B> implements Serializable permits Left, 
 
 	/**
 	 * Implementation of the {@code map} function of the
-	 * <a href="https://hackage.haskell.org/package/base/docs/src/GHC-Base.html#Functor">Functor</a> abstraction for
+	 * <a href="https://hackage.haskell.org/package/base/docs/Data-Functor.html">Functor</a> abstraction for
 	 * {@code Either<E>}.
 	 */
 	public static <E, A, B> Either<E, B> map(Function<A, B> f, Either<E, A> e) {
@@ -75,7 +75,7 @@ public sealed abstract class Either<A, B> implements Serializable permits Left, 
 	 * Lift a value into {@code Either<A>}.
 	 * <p>
 	 * Implementation of the function {@code pure} of the
-	 * <a href="https://hackage.haskell.org/package/base/docs/src/GHC-Base.html#Applicative">Applicative</a>
+	 * <a href="https://hackage.haskell.org/package/base/docs/Control-Applicative.html">Applicative</a>
 	 * abstraction for {@code Either<E>}.
 	 */
 	public static <E, A> Either<E, A> pure(A a) {
@@ -84,7 +84,7 @@ public sealed abstract class Either<A, B> implements Serializable permits Left, 
 
 	/**
 	 * Sequential application. Part of the implementation of the
-	 * <a href="https://hackage.haskell.org/package/base/docs/src/GHC-Base.html#Applicative">Applicative</a>
+	 * <a href="https://hackage.haskell.org/package/base/docs/Control-Applicative.html">Applicative</a>
 	 * abstraction for {@code Either<E>}.
 	 *
 	 * @param ef  {@code Either} of function
@@ -113,7 +113,7 @@ public sealed abstract class Either<A, B> implements Serializable permits Left, 
 
 	/**
 	 * Lift a binary function to {@code Either<E>}. Part of the implementation of the
-	 * <a href="https://hackage.haskell.org/package/base/docs/src/GHC-Base.html#Applicative">Applicative</a>
+	 * <a href="https://hackage.haskell.org/package/base/docs/Control-Applicative.html">Applicative</a>
 	 * abstraction for {@code Either<E>}.
 	 */
 	public static <E, A, B, C> Either<E, C> liftA2(BiFunction<A, B, C> f, Either<E, A> ea, Either<E, B> eb) {
@@ -142,7 +142,7 @@ public sealed abstract class Either<A, B> implements Serializable permits Left, 
 
 	/**
 	 * Implementation of the bind function of the
-	 * <a href="https://hackage.haskell.org/package/base/docs/src/GHC-Base.html#Monad">Monad</a>
+	 * <a href="https://hackage.haskell.org/package/base/docs/Control-Monad.html">Monad</a>
 	 * abstraction for {@code Either<E>}.
 	 */
 	public static <E, A, B> Either<E, B> bind(Either<E, A> e, Function<A, Either<E, B>> f) {
@@ -154,7 +154,7 @@ public sealed abstract class Either<A, B> implements Serializable permits Left, 
 
 	/**
 	 * Java implementation of
-	 * <a href="https://hackage.haskell.org/package/base-4.15.0.0/docs/Prelude.html#v:either">Haskell function
+	 * <a href="https://hackage.haskell.org/package/base/docs/Data-Either.html#v:either">Haskell function
 	 * {@code either}</a>. Useful for usage with {@link java.util.stream.Stream} API.
 	 *
 	 * @param f   function to apply to {@link Left}

@@ -19,7 +19,7 @@ public class EitherTypeClasses {
 
 	/**
 	 * Implementation of the {@code map} function of the
-	 * <a href="https://hackage.haskell.org/package/base/docs/src/GHC-Base.html#Functor">Functor</a> abstraction for
+	 * <a href="https://hackage.haskell.org/package/base/docs/Data-Functor.html">Functor</a> abstraction for
 	 * {@code Either<E>}.
 	 */
 	public static <E, A, B> Either<E, B> map(Function<A, B> f, Either<E, A> e) {
@@ -41,7 +41,7 @@ public class EitherTypeClasses {
 	 * Lift a value into {@code Either<A>}.
 	 * <p>
 	 * Implementation of the function {@code pure} of the
-	 * <a href="https://hackage.haskell.org/package/base/docs/src/GHC-Base.html#Applicative">Applicative</a>
+	 * <a href="https://hackage.haskell.org/package/base/docs/Control-Applicative.html">Applicative</a>
 	 * abstraction for {@code Either<E>}.
 	 */
 	public static <E, A> Either<E, A> pure(A a) {
@@ -50,7 +50,7 @@ public class EitherTypeClasses {
 
 	/**
 	 * Sequential application. Part of the implementation of the
-	 * <a href="https://hackage.haskell.org/package/base/docs/src/GHC-Base.html#Applicative">Applicative</a>
+	 * <a href="https://hackage.haskell.org/package/base/docs/Control-Applicative.html">Applicative</a>
 	 * abstraction for {@code Either<E>}.
 	 *
 	 * @param ef  {@code Either} of function
@@ -79,7 +79,7 @@ public class EitherTypeClasses {
 
 	/**
 	 * Lift a binary function to {@code Either<E>}. Part of the implementation of the
-	 * <a href="https://hackage.haskell.org/package/base/docs/src/GHC-Base.html#Applicative">Applicative</a>
+	 * <a href="https://hackage.haskell.org/package/base/docs/Control-Applicative.html">Applicative</a>
 	 * abstraction for {@code Either<E>}.
 	 */
 	public static <E, A, B, C> Either<E, C> liftA2(BiFunction<A, B, C> f, Either<E, A> ea, Either<E, B> eb) {
@@ -108,7 +108,7 @@ public class EitherTypeClasses {
 
 	/**
 	 * Implementation of the bind function of the
-	 * <a href="https://hackage.haskell.org/package/base/docs/src/GHC-Base.html#Monad">Monad</a>
+	 * <a href="https://hackage.haskell.org/package/base/docs/Control-Monad.html">Monad</a>
 	 * abstraction for {@code Either<E>}.
 	 */
 	public static <E, A, B> Either<E, B> bind(Either<E, A> e, Function<A, Either<E, B>> f) {

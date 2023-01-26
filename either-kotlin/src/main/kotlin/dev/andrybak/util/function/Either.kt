@@ -4,7 +4,7 @@ package dev.andrybak.util.function
 /**
  * Implementation of functional programming abstraction `Either` for Kotlin.
  *
- * Inspired by [Haskell's data type `Either`](https://hackage.haskell.org/package/base/docs/Prelude.html#t:Either).
+ * Inspired by [Haskell's data type `Either`](https://hackage.haskell.org/package/base/docs/Data-Either.html).
  *
  * @param A type for [Left]
  * @param B type for [Right]
@@ -45,7 +45,7 @@ fun <A, B, C> either(f: (A) -> C, g: (B) -> C, e: Either<A, B>): C {
 
 /**
  * Second implementation of the function [either] to allow partial application.
- * Analogue of [Haskell's function `either`](https://hackage.haskell.org/package/base/docs/Prelude.html#v:either).
+ * Analogue of [Haskell's function `either`](https://hackage.haskell.org/package/base/docs/Data-Either.html#v:either).
  *
  * @param f function to apply to [Either.Left]
  * @param g function to apply to [Either.Right]

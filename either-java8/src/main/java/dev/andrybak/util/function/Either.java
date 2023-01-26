@@ -12,7 +12,7 @@ import java.util.function.Function;
  * </p>
  * <p>
  * Inspired by
- * <a href="https://hackage.haskell.org/package/base/docs/Prelude.html#t:Either">Haskell's type {@code Either}</a>.
+ * <a href="https://hackage.haskell.org/package/base/docs/Data-Either.html">Haskell's type {@code Either}</a>.
  * </p>
  * <p>
  * If both types {@code A} and {@code B} are {@link Serializable} then {@code Either<A, B>} can be serialized.
@@ -44,7 +44,7 @@ public abstract class Either<A, B> implements Serializable {
 
 	/**
 	 * Java implementation of
-	 * <a href="https://hackage.haskell.org/package/base-4.15.0.0/docs/Prelude.html#v:either">Haskell function
+	 * <a href="https://hackage.haskell.org/package/base/docs/Data-Either.html#v:either">Haskell function
 	 * {@code either}</a>. Useful for usage with {@link java.util.stream.Stream} API.
 	 *
 	 * @param f   function to apply to {@link Left}
