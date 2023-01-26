@@ -27,6 +27,10 @@
 - Kotlin testing frameworks
     * [ ] look into https://kotlinlang.org/api/latest/kotlin.test/
     * [ ] look into https://kotest.io/
+- jar manifest
+    > Figure out adding information to the manifest files of the published jars. Especially the implementation version field.
+- Check generics
+    > Does something like Either need PECS applied to generics in method `match`, for example? One might consider Either as a collection of elements of type A or B.
 
 ## Doing
 
@@ -35,11 +39,6 @@
     * [x] Tests for serialization
     * [ ] equals & hashCode
     * [ ] tests for equals & hashCode
-- MIT License
-    > I've decided that either-jvm isn't worth keeping under LGPL
-    * [ ] figure out SPDX ID stuff
-    * [ ] delete all copyright comments in code
-    * [ ] replace COPYING and LICENSE with MIT license
 
 ## Done
 
@@ -66,3 +65,8 @@
     * [x] clean up build script for Kotlin plugin
 - Upgrade to Gradle 7.6
 - Upgrade Kotlin Gradle plugin
+- MIT License
+    > I've decided that either-jvm isn't worth keeping under LGPL
+    * [x] figure out SPDX ID stuff
+    * [x] delete all copyright comments in code
+    * [x] replace COPYING and LICENSE with MIT license
