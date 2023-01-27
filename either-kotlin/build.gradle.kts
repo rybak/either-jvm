@@ -7,10 +7,6 @@ plugins {
 group = "dev.andrybak"
 version = "0.2-SNAPSHOT"
 
-repositories {
-	mavenCentral()
-}
-
 dependencies {
 	implementation(kotlin("stdlib"))
 
