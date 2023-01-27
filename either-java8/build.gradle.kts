@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 plugins {
 	`java-library`
+	`maven-publish`
 }
 
 version = "0.2-SNAPSHOT"
@@ -23,4 +24,12 @@ tasks.withType<JavaCompile> {
 
 tasks.getByName<Test>("test") {
 	useJUnitPlatform()
+}
+
+publishing {
+	publications {
+		create<MavenPublication>("eitherJava8Jar") {
+			from(components.getByName("java"))
+		}
+	}
 }

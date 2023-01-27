@@ -2,6 +2,7 @@
 plugins {
 	kotlin("jvm") version "1.8.0"
 	`java-library`
+	`maven-publish`
 }
 
 version = "0.2-SNAPSHOT"
@@ -21,4 +22,12 @@ dependencies {
 
 tasks.named<Test>("test") {
 	useJUnitPlatform()
+}
+
+publishing {
+	publications {
+		create<MavenPublication>("eitherKotlinJar") {
+			from(components.getByName("kotlin"))
+		}
+	}
 }
