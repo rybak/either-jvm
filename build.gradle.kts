@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: MIT
-group = "dev.andrybak"
 
 subprojects {
+	group = "dev.andrybak.either-jvm"
+
 	repositories {
 		mavenCentral()
 	}

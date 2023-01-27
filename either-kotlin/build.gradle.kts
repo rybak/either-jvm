@@ -4,7 +4,6 @@ plugins {
 	`java-library`
 }
 
-group = "dev.andrybak"
 version = "0.2-SNAPSHOT"
 
 kotlin {
