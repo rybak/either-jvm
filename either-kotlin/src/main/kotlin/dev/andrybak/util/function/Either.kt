@@ -29,6 +29,9 @@ sealed class Either<A, B> {
 /**
  * Apply one of given functions to given [Either] value, depending on its type.
  *
+ * Case analysis for the [Either] type. If the value is [Either.Left], apply the first function to the
+ * value; if it is [Either.Right], apply the second function.
+ *
  * @param f function to apply to [Either.Left]
  * @param g function to apply to [Either.Right]
  * @param A type for [Either.Left]
@@ -44,8 +47,13 @@ fun <A, B, C> either(f: (A) -> C, g: (B) -> C, e: Either<A, B>): C {
 }
 
 /**
+ * Convert two functions, one which takes `A` and returns `C` and another which takes `B` and
+ * returns `C`, into a function that takes an `Either` and returns `C`.
+ *
  * Second implementation of the function [either] to allow partial application.
- * Analogue of [Haskell's function `either`](https://hackage.haskell.org/package/base/docs/Data-Either.html#v:either).
+ *
+ * Implementation of [Haskell function `either`](https://hackage.haskell.org/package/base/docs/Data-Either.html#v:either)
+ * in Kotlin.
  *
  * @param f function to apply to [Either.Left]
  * @param g function to apply to [Either.Right]

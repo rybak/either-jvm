@@ -153,9 +153,13 @@ public sealed abstract class Either<A, B> implements Serializable permits Left, 
 	}
 
 	/**
-	 * Java implementation of
+	 * Convert two functions, one which takes {@code A} and returns {@code C} and another which takes {@code B} and
+	 * returns {@code C}, into a {@link Function} that takes an {@code Either<A, B>} and returns {@code C}.
+	 * This can be useful for usage with {@link java.util.stream.Stream} API.
+	 * <p>
+	 * Implementation of
 	 * <a href="https://hackage.haskell.org/package/base/docs/Data-Either.html#v:either">Haskell function
-	 * {@code either}</a>. Useful for usage with {@link java.util.stream.Stream} API.
+	 * {@code either}</a> in Java.
 	 *
 	 * @param f   function to apply to {@link Left}
 	 * @param g   function to apply to {@link Right}
@@ -171,6 +175,8 @@ public sealed abstract class Either<A, B> implements Serializable permits Left, 
 
 	/**
 	 * Apply one of given functions to given {@link Either} value, depending on its type.
+	 * Case analysis for the {@link Either} type. If the value is {@link Left Left}, apply the first function to the
+	 * value; if it is {@link Right Right}, apply the second function.
 	 *
 	 * @param f   function to apply to {@link Left}
 	 * @param g   function to apply to {@link Right}
