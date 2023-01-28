@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-package dev.andrybak.util.function;
+package dev.andrybak.util.function.java17;
 
 import java.util.function.Function;
 import java.util.stream.Stream;
@@ -14,11 +14,11 @@ public class EitherStreams {
 
 	/**
 	 * Returns a stream consisting of objects of type {@code A} taken from elements of given stream of {@link Either}
-	 * that are {@link Either.Left}.
+	 * that are {@link Left}.
 	 *
-	 * @param <A> type for {@link Either.Left}
-	 * @param <B> type for {@link Either.Right}
-	 * @return {@link Stream} of {@code A} from {@link Either.Left Left} values of given {@link Stream}
+	 * @param <A> type for {@link Left}
+	 * @param <B> type for {@link Right}
+	 * @return {@link Stream} of {@code A} from {@link Left} values of given {@link Stream}
 	 */
 	public static <A, B> Stream<A> lefts(Stream<? extends Either<? extends A, ? extends B>> eitherStream) {
 		return eitherStream
@@ -33,11 +33,11 @@ public class EitherStreams {
 
 	/**
 	 * Returns a stream consisting of objects of type {@code B} taken from elements of given stream of {@link Either}
-	 * that are {@link Either.Right}.
+	 * that are {@link Right}.
 	 *
-	 * @param <A> type for {@link Either.Left}
-	 * @param <B> type for {@link Either.Right}
-	 * @return {@link Stream} of {@code B} from {@link Either.Right Right} values of given {@link Stream}
+	 * @param <A> type for {@link Left}
+	 * @param <B> type for {@link Right}
+	 * @return {@link Stream} of {@code B} from {@link Right} values of given {@link Stream}
 	 */
 	public static <A, B> Stream<B> rights(Stream<? extends Either<? extends A, ? extends B>> eitherStream) {
 		return eitherStream
