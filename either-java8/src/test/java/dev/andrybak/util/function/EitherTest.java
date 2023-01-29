@@ -3,6 +3,9 @@ package dev.andrybak.util.function;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.function.Function;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -57,5 +60,24 @@ public class EitherTest {
 				b -> "Right value " + b,
 				rightValue
 		));
+	}
+
+	@Test
+	void testThatMatchAcceptsFunctionWithSuperClassInput() {
+		assertAll(() -> {
+			Either<String, Integer> leftValue = Either.left("bar");
+			Function<CharSequence, String> f = cs -> "foo" + cs.toString();
+			assertEquals("foobar", leftValue.match(
+					f,
+					b -> "Right value " + b
+			));
+		}, () -> {
+			Either<String, Integer> rightValue = Either.right(42);
+			Function<Number, String> g = n -> n.toString() + "bar";
+			assertEquals("42bar", rightValue.match(
+					a -> "Left value " + a,
+					g
+			));
+		});
 	}
 }
