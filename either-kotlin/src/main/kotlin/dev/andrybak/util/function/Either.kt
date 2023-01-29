@@ -9,7 +9,7 @@ package dev.andrybak.util.function
  * @param A type for [Left]
  * @param B type for [Right]
  */
-sealed class Either<A, B> {
+sealed class Either<out A, out B> {
 	/**
 	 * Left alternative of the `Either<A, B>` type, containing a value of type `A`.
 	 */

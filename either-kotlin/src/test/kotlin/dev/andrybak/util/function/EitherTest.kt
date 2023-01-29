@@ -1,8 +1,10 @@
 package dev.andrybak.util.function
 
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertInstanceOf
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertAll
 
 internal class EitherTest {
 	@Test
@@ -67,5 +69,48 @@ internal class EitherTest {
 		val rightValue: Either<String, Int> = Either.right(42)
 		val f: (Either<String, Int>) -> String = either({ a -> "foo$a" }, { b -> "Right value $b" })
 		assertEquals("Right value 42", f(rightValue))
+	}
+
+	@Test
+	internal fun testThatEitherOfSubClassesCanBeUsedAsParameter() {
+		val f: (Either<CharSequence, Number>) -> Unit = { e ->
+			when (e) {
+				is Either.Left -> assertInstanceOf(CharSequence::class.java, e.leftValue)
+				is Either.Right -> assertInstanceOf(Number::class.java, e.rightValue)
+			}
+		}
+		val leftValue: Either<String, Int> = Either.left("foo")
+		val rightValue: Either<String, Int> = Either.right(42)
+		f.invoke(leftValue)
+		f.invoke(rightValue)
+	}
+
+	@Test
+	internal fun testThatEitherAcceptsFunctionWithSuperClassInput() {
+		val f: (CharSequence) -> String = { cs -> "foo$cs" }
+		val g: (Number) -> String = { n -> "${n}bar" }
+		val leftValue: Either<String, Int> = Either.left("bar")
+		assertEquals("foobar", either(f, g, leftValue))
+		assertEquals("foobar", either(f, g).invoke(leftValue))
+		val rightValue: Either<String, Int> = Either.right(42)
+		assertEquals("42bar", either(f, g, rightValue))
+		assertEquals("42bar", either(f, g).invoke(rightValue))
+	}
+
+	@Test
+	internal fun testThatEitherAcceptsFunctionWithSubClassOutput() {
+		assertAll({
+			val f: (String) -> List<String> = { cs -> listOf("foo", cs) }
+			val dummy: (Int) -> Collection<String> = { _ -> emptySet() }
+			val leftValue: Either<String, Int> = Either.left("bar")
+			assertEquals(listOf("foo", "bar"), either(f, dummy, leftValue))
+			assertEquals(listOf("foo", "bar"), either(f, dummy).invoke(leftValue))
+		}, {
+			val dummy: (String) -> Collection<String> = { _ -> emptySet() }
+			val g: (Int) -> List<String> = { n -> listOf(n.toString(), "bar") }
+			val rightValue: Either<String, Int> = Either.right(42)
+			assertEquals(listOf("42", "bar"), either(dummy, g).invoke(rightValue))
+			assertEquals(listOf("42", "bar"), either(dummy, g, rightValue))
+		})
 	}
 }
