@@ -17,7 +17,7 @@ public class EitherStreams {
 	 * @param <B> type for {@link Either.Right}
 	 * @return {@link Stream} of {@code A} from {@link Either.Left Left} values of given {@link Stream}
 	 */
-	public static <A, B> Stream<A> lefts(Stream<Either<A, B>> eitherStream) {
+	public static <A, B> Stream<A> lefts(Stream<? extends Either<? extends A, ? extends B>> eitherStream) {
 		return eitherStream
 				.filter(e -> e.match(left -> true, right -> false))
 				.map(Either.either(
@@ -33,7 +33,7 @@ public class EitherStreams {
 	 * @param <B> type for {@link Either.Right}
 	 * @return {@link Stream} of {@code B} from {@link Either.Right Right} values of given {@link Stream}
 	 */
-	public static <A, B> Stream<B> rights(Stream<Either<A, B>> eitherStream) {
+	public static <A, B> Stream<B> rights(Stream<? extends Either<? extends A, ? extends B>> eitherStream) {
 		return eitherStream
 				.filter(e -> e.match(left -> false, right -> true))
 				.map(Either.either(
