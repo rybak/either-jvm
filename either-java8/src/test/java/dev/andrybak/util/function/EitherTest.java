@@ -172,4 +172,42 @@ public class EitherTest {
 			);
 		});
 	}
+
+	@Test
+	void testThatEitherAcceptsFunctionWithSubClassOutput() {
+		// dummy is used to force the return type to be `Collection<String>`
+		Collection<String> dummy = Collections.emptySet();
+		assertAll("either(f,g)", () -> {
+			Either<String, Integer> leftValue = Either.left("bar");
+			Function<String, List<String>> f = s -> Arrays.asList("foo", s);
+			assertEquals(Arrays.asList("foo", "bar"), Either.either(
+					f,
+					(Integer b) -> dummy
+			).apply(leftValue));
+		}, () -> {
+			Either<String, Integer> rightValue = Either.right(42);
+			Function<Integer, List<String>> g = i -> Arrays.asList(i.toString(), "bar");
+			assertEquals(Arrays.asList("42", "bar"), Either.either(
+					(String a) -> dummy,
+					g
+			).apply(rightValue));
+		});
+		assertAll("either(f,g,e)", () -> {
+			Either<String, Integer> leftValue = Either.left("bar");
+			Function<String, List<String>> f = s -> Arrays.asList("foo", s);
+			assertEquals(Arrays.asList("foo", "bar"), Either.either(
+					f,
+					(Integer b) -> dummy,
+					leftValue
+			));
+		}, () -> {
+			Either<String, Integer> rightValue = Either.right(42);
+			Function<Integer, List<String>> g = i -> Arrays.asList(i.toString(), "bar");
+			assertEquals(Arrays.asList("42", "bar"), Either.either(
+					(String a) -> dummy,
+					g,
+					rightValue
+			));
+		});
+	}
 }
