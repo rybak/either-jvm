@@ -7,6 +7,12 @@ plugins {
 group = "dev.andrybak"
 version = "0.2-SNAPSHOT"
 
+kotlin {
+	jvmToolchain {
+		languageVersion.set(JavaLanguageVersion.of(17))
+	}
+}
+
 dependencies {
 	implementation(kotlin("stdlib"))
 
