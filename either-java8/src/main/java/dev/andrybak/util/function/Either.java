@@ -88,7 +88,7 @@ public abstract class Either<A, B> implements Serializable {
 	 * @param g   function to apply to {@link Right}
 	 * @param <R> return type of functions
 	 */
-	public abstract <R> R match(Function<? super A, R> f, Function<? super B, R> g);
+	public abstract <R> R match(Function<? super A, ? extends R> f, Function<? super B, ? extends R> g);
 
 	public static final class Left<A, B> extends Either<A, B> {
 		private final A a;
@@ -98,7 +98,7 @@ public abstract class Either<A, B> implements Serializable {
 		}
 
 		@Override
-		public <R> R match(Function<? super A, R> f, Function<? super B, R> g) {
+		public <R> R match(Function<? super A, ? extends R> f, Function<? super B, ? extends R> g) {
 			return f.apply(a);
 		}
 	}
@@ -111,7 +111,7 @@ public abstract class Either<A, B> implements Serializable {
 		}
 
 		@Override
-		public <R> R match(Function<? super A, R> f, Function<? super B, R> g) {
+		public <R> R match(Function<? super A, ? extends R> f, Function<? super B, ? extends R> g) {
 			return g.apply(b);
 		}
 	}

@@ -3,6 +3,10 @@ package dev.andrybak.util.function;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.function.Function;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -76,6 +80,27 @@ public class EitherTest {
 			Function<Number, String> g = n -> n.toString() + "bar";
 			assertEquals("42bar", rightValue.match(
 					a -> "Left value " + a,
+					g
+			));
+		});
+	}
+
+	@Test
+	void testThatMatchAcceptsFunctionWithSubClassOutput() {
+		// dummy is used to force the return type to be `Collection<String>`
+		Collection<String> dummy = Collections.emptySet();
+		assertAll(() -> {
+			Either<String, Integer> leftValue = Either.left("bar");
+			Function<String, List<String>> f = s -> Arrays.asList("foo", s);
+			assertEquals(Arrays.asList("foo", "bar"), leftValue.match(
+					f,
+					(Integer b) -> dummy
+			));
+		}, () -> {
+			Either<String, Integer> rightValue = Either.right(42);
+			Function<Integer, List<String>> g = i -> Arrays.asList(i.toString(), "bar");
+			assertEquals(Arrays.asList("42", "bar"), rightValue.match(
+					(String a) -> dummy,
 					g
 			));
 		});

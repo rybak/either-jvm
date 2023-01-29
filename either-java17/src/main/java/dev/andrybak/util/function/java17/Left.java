@@ -11,7 +11,7 @@ public final class Left<A, B> extends Either<A, B> {
 	}
 
 	@Override
-	public <R> R match(Function<? super A, R> f, Function<? super B, R> g) {
+	public <R> R match(Function<? super A, ? extends R> f, Function<? super B, ? extends R> g) {
 		return f.apply(a);
 	}
 }

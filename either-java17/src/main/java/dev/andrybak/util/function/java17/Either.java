@@ -220,5 +220,5 @@ public sealed abstract class Either<A, B> implements Serializable permits Left, 
 	 * @param g   function to apply to {@link Right}
 	 * @param <R> return type of functions
 	 */
-	public abstract <R> R match(Function<? super A, R> f, Function<? super B, R> g);
+	public abstract <R> R match(Function<? super A, ? extends R> f, Function<? super B, ? extends R> g);
 }
