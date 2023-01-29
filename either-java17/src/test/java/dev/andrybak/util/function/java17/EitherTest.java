@@ -118,4 +118,37 @@ public class EitherTest {
 			);
 		});
 	}
+
+	@Test
+	void testThatEitherAcceptsEitherWithSubClass() {
+		class SuperClass {
+			@Override
+			public String toString() {
+				return "SuperClass";
+			}
+		}
+		class SubClass extends SuperClass {
+			@Override
+			public String toString() {
+				return "SubClass";
+			}
+		}
+		assertAll("either(f,g,e) with forced type parameters", () -> {
+			Either<SubClass, Integer> leftValue = Either.left(new SubClass());
+			Function<SuperClass, String> takesSuperclass = superObj -> "foo" + superObj.toString();
+			Function<Integer, String> g = (Integer b) -> "Right value " + b;
+			assertEquals(
+					"fooSubClass",
+					Either.<SuperClass, Integer, String>either(takesSuperclass, g, leftValue)
+			);
+		}, () -> {
+			Either<Integer, SubClass> rightValue = Either.right(new SubClass());
+			Function<Integer, String> f = (Integer b) -> "Left value " + b;
+			Function<SuperClass, String> takesSuperclass = superObj -> "foo" + superObj.toString();
+			assertEquals(
+					"fooSubClass",
+					Either.<Integer, SuperClass, String>either(f, takesSuperclass, rightValue)
+			);
+		});
+	}
 }

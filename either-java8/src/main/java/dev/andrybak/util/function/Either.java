@@ -83,7 +83,7 @@ public abstract class Either<A, B> implements Serializable {
 	public static <A, B, C> C either(
 			Function<? super A, C> f,
 			Function<? super B, C> g,
-			Either<A, B> e)
+			Either<? extends A, ? extends B> e)
 	{
 		return e.match(f, g);
 	}
