@@ -105,4 +105,23 @@ public class EitherTest {
 			));
 		});
 	}
+
+	@Test
+	void testThatEitherAcceptsFunctionWithSuperClassInput() {
+		assertAll("either(f,g)", () -> {
+			Either<String, Integer> leftValue = Either.left("bar");
+			Function<CharSequence, String> takesSuperclass = cs -> "foo" + cs.toString();
+			assertEquals(
+					"foobar",
+					Either.either(takesSuperclass, b -> "Right value " + b).apply(leftValue)
+			);
+		}, () -> {
+			Either<String, Integer> rightValue = Either.right(42);
+			Function<Number, String> takesSuperClass = n -> n.toString() + "bar";
+			assertEquals(
+					"42bar",
+					Either.either(a -> "Left value " + a, takesSuperClass).apply(rightValue)
+			);
+		});
+	}
 }

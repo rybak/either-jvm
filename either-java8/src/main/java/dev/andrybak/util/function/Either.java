@@ -59,7 +59,10 @@ public abstract class Either<A, B> implements Serializable {
 	 * @return function which takes an {@link Either} and returns result of applying the function corresponding to its
 	 * type.
 	 */
-	public static <A, B, C> Function<Either<A, B>, C> either(Function<A, C> f, Function<B, C> g) {
+	public static <A, B, C> Function<Either<? extends A, ? extends B>, C> either(
+			Function<? super A, C> f,
+			Function<? super B, C> g)
+	{
 		return e -> e.match(f, g);
 	}
 
