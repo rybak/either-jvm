@@ -190,7 +190,11 @@ public sealed abstract class Either<A, B> implements Serializable permits Left, 
 	 * @implNote second implementation of function {@code either} is needed because Java doesn't support partial
 	 * application of functions.
 	 */
-	public static <A, B, C> C either(Function<A, C> f, Function<B, C> g, Either<A, B> e) {
+	public static <A, B, C> C either(
+			Function<? super A, C> f,
+			Function<? super B, C> g,
+			Either<A, B> e)
+	{
 		return e.match(f, g);
 	}
 
