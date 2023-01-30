@@ -32,12 +32,8 @@
 
 - Check generics
     > Does something like Either need PECS applied to generics in method `match`, for example? One might consider Either as a collection of elements of type A or B.
-    * [ ] see branch `generics` on GitHub/GitLab
-- Java 17 EitherStreams
-    > Pretty much a copy of -java8 version. The only difference I've noticed is List.of and Stream.toList usage possibility in the tests.
-    * [ ] WIP in local branch
-- Set up publishing
-    > Use Gradle plugin maven-publish for publishing of jars to Maven repositories
+    * [x] see branch `generics` on GitHub/GitLab
+    * [ ] Kotlin
 - equals & hashCode & Serializable
     * [x] Serializable
     * [x] Tests for serialization
@@ -76,3 +72,8 @@
     * [x] replace COPYING and LICENSE with MIT license
 - Gradle: specify --release for javac
     > Implemented in commit af9bdcf (either-java8: clean up Gradle build script, 2021-08-07)
+- Java 17 EitherStreams
+    > Pretty much a copy of -java8 version. The only difference I've noticed is List.of and Stream.toList usage possibility in the tests.
+    * [x] WIP in local branch
+- Set up publishing
+    > Use Gradle plugin maven-publish for publishing of jars to Maven repositories
