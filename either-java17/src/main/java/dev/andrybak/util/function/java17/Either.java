@@ -198,28 +198,6 @@ public sealed abstract class Either<A, B> implements Serializable permits Left, 
 		return e.match(f, g);
 	}
 
-	public static <A, B> Stream<A> lefts(Stream<Either<A, B>> eitherStream) {
-		return eitherStream
-				.filter(e -> e.match(left -> true, right -> false))
-				.map(either(
-						Function.identity(),
-						right -> {
-							throw new IllegalStateException("Got a right value after filtering");
-						}
-				));
-	}
-
-	public static <A, B> Stream<B> rights(Stream<Either<A, B>> eitherStream) {
-		return eitherStream
-				.filter(e -> e.match(left -> false, right -> true))
-				.map(either(
-						left -> {
-							throw new IllegalStateException("Got a left value after filtering");
-						},
-						Function.identity()
-				));
-	}
-
 	/**
 	 * Pattern match on this {@code Either} and return result of applying the corresponding function.
 	 *
