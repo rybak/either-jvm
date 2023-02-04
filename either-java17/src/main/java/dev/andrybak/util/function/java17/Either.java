@@ -4,7 +4,6 @@ package dev.andrybak.util.function.java17;
 import java.io.Serializable;
 import java.util.function.BiFunction;
 import java.util.function.Function;
-import java.util.stream.Stream;
 
 /**
  * Java implementation of functional programming abstraction {@code Either} for Java 17 using sealed classes feature.
@@ -29,7 +28,7 @@ import java.util.stream.Stream;
  * @param <A> type for {@link Left}
  * @param <B> type for {@link Right}
  */
-public sealed abstract class Either<A, B> implements Serializable permits Left, Right {
+public abstract sealed class Either<A, B> implements Serializable permits Left, Right {
 	/**
 	 * @implNote Constructor is not private, because {@link Left} and {@link Right} classes are not nested in *
 	 * {@link Either}.
