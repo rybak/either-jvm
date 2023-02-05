@@ -10,7 +10,13 @@ package dev.andrybak.util.function
  * @param B type for [Right]
  */
 sealed class Either<A, B> {
+	/**
+	 * Left alternative of the `Either<A, B>` type, containing a value of type `A`.
+	 */
 	data class Left<A, B>(val leftValue: A) : Either<A, B>()
+	/**
+	 * Right alternative of the `Either<A, B>` type, containing a value of type `B`.
+	 */
 	data class Right<A, B>(val rightValue: B) : Either<A, B>()
 
 	companion object {
@@ -27,10 +33,8 @@ sealed class Either<A, B> {
 }
 
 /**
- * Apply one of given functions to given [Either] value, depending on its type.
- *
- * Case analysis for the [Either] type. If the value is [Either.Left], apply the first function to the
- * value; if it is [Either.Right], apply the second function.
+ * If given [Either] is [Left][Either.Left], returns result of applying the first given function to its value,
+ * if it is [Right][Either.Right], returns result of applying the second given function to its value.
  *
  * @param f function to apply to [Either.Left]
  * @param g function to apply to [Either.Right]
@@ -47,7 +51,7 @@ fun <A, B, C> either(f: (A) -> C, g: (B) -> C, e: Either<A, B>): C {
 }
 
 /**
- * Convert two functions, one which takes `A` and returns `C` and another which takes `B` and
+ * Converts two functions, one which takes `A` and returns `C` and another which takes `B` and
  * returns `C`, into a function that takes an `Either` and returns `C`.
  *
  * Second implementation of the function [either] to allow partial application.
