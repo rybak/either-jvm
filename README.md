@@ -14,14 +14,16 @@ is a very useful data type.  There are several implementations of it for JVM:
 - https://github.com/functionaljava/functionaljava/blob/series/5.x/core/src/main/java/fj/data/Either.java
 - https://github.com/meoyawn/kotlin-either
 
-However, they have various properties, which make their usage inconvenient or
-cumbersome:
+However, they have some combination of the following properties, which make
+their usage inconvenient or cumbersome:
 
 - don't include convenient structural pattern matching facilities for their
   `Either` type
 - don't use Java 8 functional interfaces directly
 - are included as part of very big unwieldy functional programming library
 - don't provide APIs with conventional naming structure
+- don't utilize wildcard type parameters, making it hard to use functional
+  variables and method references with inexact type
 
 Either-JVM is also a personal exercise in library writing and programming
 language learning.
