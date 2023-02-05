@@ -34,6 +34,34 @@ internal class EitherTest {
 	}
 
 	@Test
+	internal fun testThatLeftCanBeMatchedByMatch() {
+		val leftValue: Either<String, Int> = Either.left("bar")
+		val f: (String) -> String = { a -> "foo$a" }
+		val g: (Int) -> String = { b -> "Right value $b" }
+		assertEquals("foobar", leftValue.match(f, g))
+	}
+
+	@Test
+	internal fun testThatRightCanBeMatchedByMatch() {
+		val rightValue: Either<String, Int> = Either.right(42)
+		val f: (String) -> String = { a -> "foo$a" }
+		val g: (Int) -> String = { b -> "Right value $b" }
+		assertEquals("Right value 42", rightValue.match(f, g))
+	}
+
+	@Test
+	internal fun testThatLeftCanBeMatchedByMatchWithMethodRef() {
+		val leftValue: Either<String, Int> = Either.left("bar")
+		assertEquals("foobar", leftValue.match(::foo, ::bar))
+	}
+
+	@Test
+	internal fun testThatRightCanBeMatchedByMatchWithMethodRef() {
+		val rightValue: Either<String, Int> = Either.right(42)
+		assertEquals("Right value 42", rightValue.match(::foo, ::bar))
+	}
+
+	@Test
 	internal fun testThatRightCanBeMatchedByWhen() {
 		val rightValue: Either<String, Int> = Either.right(42)
 		assertEquals(
@@ -112,5 +140,10 @@ internal class EitherTest {
 			assertEquals(listOf("42", "bar"), either(dummy, g).invoke(rightValue))
 			assertEquals(listOf("42", "bar"), either(dummy, g, rightValue))
 		})
+	}
+
+	companion object {
+		fun foo(s: String): String = "foo$s"
+		private fun bar(i: Int): String = "Right value $i"
 	}
 }

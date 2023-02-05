@@ -11,13 +11,21 @@ package dev.andrybak.util.function
  */
 sealed class Either<out A, out B> {
 	/**
-	 * Left alternative of the `Either<A, B>` type, containing a value of type `A`.
+	 * Pattern matches on this [Either] and returns result of applying the corresponding function.
+	 *
+	 * @param f function to apply to a value of [Left]
+	 * @param g function to apply to a value of [Right]
+	 * @param R return type of functions
 	 */
-	data class Left<A, B>(val leftValue: A) : Either<A, B>()
-	/**
-	 * Right alternative of the `Either<A, B>` type, containing a value of type `B`.
-	 */
-	data class Right<A, B>(val rightValue: B) : Either<A, B>()
+	abstract fun <R> match(f: (A) -> R, g: (B) -> R): R
+
+	data class Left<A, B>(val leftValue: A) : Either<A, B>() {
+		override fun <R> match(f: (A) -> R, g: (B) -> R): R = f(leftValue)
+	}
+
+	data class Right<A, B>(val rightValue: B) : Either<A, B>() {
+		override fun <R> match(f: (A) -> R, g: (B) -> R): R = g(rightValue)
+	}
 
 	companion object {
 		/**
