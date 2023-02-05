@@ -9,11 +9,13 @@
     * [ ] Wait until Java 17 is released
     * [ ] Wait until JDK with needed flag is available in Ubuntu https://stackoverflow.com/q/68702414/1083697
     * [ ] https://openjdk.java.net/jeps/406 -- pattern matching is preview feature in Java 17
+    * [ ] maybe in a separate module either-java17-samples?
 - Kotlin: data class?
     * [ ] Are data classes a good idea for Left and Right? Left#a and Right#b seemingly make it too attached to <A, B> type parameter naming
     * [ ] are data classes with all fields private  possible?
     * [ ] data class Left(private val a: A) ???
 - Add Haskell type notation to Javadocs
+    > Not sure if it would be useful - it would confuse people not familiar with Haskell.
 - either-java8 JSON
     > Since we'll make classes Serialiazeable, there should be a JSON serialization implementation for popular JSON libraries.
     * [ ] either-java8-gson -- not possible, because of type erasure -- but we could help users make their own Json(De)Serializers, maybe
@@ -27,18 +29,24 @@
     * [ ] look into https://kotest.io/
 - jar manifest
     > Figure out adding information to the manifest files of the published jars. Especially the implementation version field.
+- Maybe toOptional()?
+    > A method that discards Left and wraps Right into an Optional.of
 
 ## Doing
 
-- Check generics
-    > Does something like Either need PECS applied to generics in method `match`, for example? One might consider Either as a collection of elements of type A or B.
-    * [x] see branch `generics` on GitHub/GitLab
-    * [ ] Kotlin
 - equals & hashCode & Serializable
     * [x] Serializable
     * [x] Tests for serialization
     * [ ] equals & hashCode
     * [ ] tests for equals & hashCode
+    * [ ] add documentation for equals and hashCode explaining dependence on types `A` and `B` implementing equals and hashCode
+- method that takes two Consumers
+    * [x] Method name candidates: accept, process, handle, apply, execute
+    * [x] peek
+    * [x] accept
+    * [ ] either-kotlin implementation
+    * [ ] add documentation comments
+    * [ ] merge to `main`
 
 ## Done
 
@@ -77,3 +85,7 @@
     * [x] WIP in local branch
 - Set up publishing
     > Use Gradle plugin maven-publish for publishing of jars to Maven repositories
+- Check generics
+    > Does something like Either need PECS applied to generics in method `match`, for example? One might consider Either as a collection of elements of type A or B.
+    * [x] see branch `generics` on GitHub/GitLab
+    * [x] Kotlin
