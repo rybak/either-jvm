@@ -6,11 +6,13 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.NotSerializableException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.function.Function;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class EitherSerializationTest {
 	@SuppressWarnings("unchecked")
@@ -36,6 +38,13 @@ public class EitherSerializationTest {
 		}
 	}
 
+	private static <A, B> void testNonSerializable(Either<A, B> original) {
+		assertThrows(NotSerializableException.class, () -> {
+			ObjectOutputStream output = new ObjectOutputStream(new ByteArrayOutputStream());
+			output.writeObject(original);
+		});
+	}
+
 	@Test
 	void testThatLeftCanBeSerialized() {
 		testSerializationRoundTrip(Either.left("foo"),
@@ -57,5 +66,28 @@ public class EitherSerializationTest {
 				},
 				i -> "Right value: " + i
 		);
+	}
+
+
+	@Test
+	void testThatNonSerializableLeftThrows() {
+		Either<NonSerializable, String> leftValue = Either.left(new NonSerializable("foo", 42));
+		testNonSerializable(leftValue);
+	}
+
+	@Test
+	void testThatNonSerializableRightThrows() {
+		Either<String, NonSerializable> rightValue = Either.right(new NonSerializable("bar", 100));
+		testNonSerializable(rightValue);
+	}
+
+	static final class NonSerializable {
+		final String s;
+		final int i;
+
+		NonSerializable(String s, int i) {
+			this.s = s;
+			this.i = i;
+		}
 	}
 }
