@@ -1,5 +1,6 @@
 package dev.andrybak.util.function
 
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertInstanceOf
 import org.junit.jupiter.api.Assertions.assertNotNull
@@ -140,6 +141,73 @@ internal class EitherTest {
 			assertEquals(listOf("42", "bar"), either(dummy, g).invoke(rightValue))
 			assertEquals(listOf("42", "bar"), either(dummy, g, rightValue))
 		})
+	}
+
+
+	@Test
+	fun testAcceptOnLeft() {
+		val leftValue: Either<String, Int> = Either.left("foo")
+		var leftCount = 0
+		leftValue.accept(
+			{ a: String ->
+				leftCount++
+				assertEquals("foo", a)
+			},
+			{ _: Int -> Assertions.fail<Any>("unexpected Right") }
+		)
+		assertEquals(1, leftCount)
+	}
+
+	@Test
+	fun testAcceptOnRight() {
+		val rightValue: Either<String, Int> = Either.right(42)
+		var rightCount = 0
+		rightValue.accept(
+			{ _: String ->
+				Assertions.fail<Any>(
+					"unexpected Left"
+				)
+			},
+			{ b: Int? ->
+				rightCount++
+				assertEquals(42, b)
+			}
+		)
+		assertEquals(1, rightCount)
+	}
+
+	@Test
+	fun testPeekOnLeft() {
+		val leftValue: Either<String, Int> = Either.left("foo")
+		var leftCount = 0
+		val res: Either<String, Int> = leftValue.peek(
+			{ a: String ->
+				leftCount++
+				assertEquals("foo", a)
+			},
+			{ _: Int ->
+				Assertions.fail("unexpected Right")
+			}
+		)
+		assertEquals(1, leftCount)
+		Assertions.assertSame(leftValue, res)
+	}
+
+	@Test
+	fun testPeekOnRight() {
+		val rightValue: Either<String, Int> = Either.right(42)
+		var rightCount = 0
+		val res: Either<String, Int> = rightValue.peek(
+			{ _: String ->
+				Assertions.fail("unexpected Left")
+			},
+			{ b: Int ->
+				rightCount++
+				assertEquals(42, b)
+			}
+		)
+		Assertions.assertSame(rightValue, res)
+		assertEquals(1, rightCount)
 	}
 
 	companion object {

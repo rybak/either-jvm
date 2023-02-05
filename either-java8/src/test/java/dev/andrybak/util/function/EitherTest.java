@@ -12,6 +12,8 @@ import java.util.function.Function;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class EitherTest {
 	@Test
@@ -209,5 +211,63 @@ public class EitherTest {
 					rightValue
 			));
 		});
+	}
+
+	@Test
+	void testAcceptOnLeft() {
+		Either<String, Integer> leftValue = Either.left("foo");
+		final int[] leftCount = {0};
+		leftValue.accept(
+				a -> {
+					leftCount[0]++;
+					assertEquals("foo", a);
+				},
+				b -> fail("unexpected Right")
+		);
+		assertEquals(1, leftCount[0]);
+	}
+
+	@Test
+	void testAcceptOnRight() {
+		Either<String, Integer> rightValue = Either.right(42);
+		final int[] rightCount = {0};
+		rightValue.accept(
+				a -> fail("unexpected Left"),
+				b -> {
+					rightCount[0]++;
+					assertEquals(42, b);
+				}
+		);
+		assertEquals(1, rightCount[0]);
+	}
+
+	@Test
+	void testPeekOnLeft() {
+		Either<String, Integer> leftValue = Either.left("foo");
+		final int[] leftCount = {0};
+		Either<String, Integer> res = leftValue.peek(
+				a -> {
+					leftCount[0]++;
+					assertEquals("foo", a);
+				},
+				b -> fail("unexpected Right")
+		);
+		assertEquals(1, leftCount[0]);
+		assertSame(leftValue, res);
+	}
+
+	@Test
+	void testPeekOnRight() {
+		Either<String, Integer> rightValue = Either.right(42);
+		final int[] rightCount = {0};
+		Either<String, Integer> res = rightValue.peek(
+				a -> fail("unexpected Left"),
+				b -> {
+					rightCount[0]++;
+					assertEquals(42, b);
+				}
+		);
+		assertSame(rightValue, res);
+		assertEquals(1, rightCount[0]);
 	}
 }

@@ -2,6 +2,7 @@
 package dev.andrybak.util.function.java17;
 
 import java.io.Serializable;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
@@ -98,4 +99,33 @@ public abstract sealed class Either<A, B> implements Serializable permits Left, 
 	 * @param <R> return type of functions
 	 */
 	public abstract <R> R match(Function<? super A, ? extends R> f, Function<? super B, ? extends R> g);
+
+	/**
+	 * If this {@link Either} is {@link Left Left}, performs the first given action with its value.
+	 * If this {@link Either} is {@link Right Right}, performs the second given action with its value.
+	 *
+	 * @param f consumer to apply to a value of {@link Left}
+	 * @param g consumer to apply to a value of {@link Right}
+	 */
+	public abstract void accept(Consumer<? super A> f, Consumer<? super B> g);
+
+	/**
+	 * If this {@link Either} is {@link Left Left}, performs the first given action with its value and returns this
+	 * {@link Either}. If this {@link Either} is a {@link Right Right}, performs the second given action with its
+	 * value and returns this {@link Either}.
+	 * <p>
+	 * This method is useful for adding logging or debugging statements in the middle of invocation of method
+	 * {@link #match(Function, Function)}:
+	 *
+	 * <pre>{@code
+	 * return getEither()
+	 *     .peek(a -> System.out.println("Got left " + a), b -> System.out.println("Got right " + b));
+	 *     .match(...);
+	 * }</pre>
+	 *
+	 * @param f consumer to apply to {@link Left}
+	 * @param g consumer to apply to {@link Right}
+	 * @return this {@link Either}
+	 */
+	public abstract Either<A, B> peek(Consumer<? super A> f, Consumer<? super B> g);
 }

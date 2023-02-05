@@ -19,6 +19,35 @@ sealed class Either<out A, out B> {
 	 */
 	abstract fun <R> match(f: (A) -> R, g: (B) -> R): R
 
+	/**
+	 * If this [Either] is [Left], performs the first given action with its value.
+	 * If this [Either] is [Right], performs the second given action with its value.
+	 *
+	 * @param f consumer to apply to a value of [Left]
+	 * @param g consumer to apply to a value of [Right]
+	 */
+	inline fun accept(f: (A) -> Unit, g: (B) -> Unit) {
+		when (this) {
+			is Left -> f(leftValue)
+			is Right -> g(rightValue)
+		}
+	}
+
+	/**
+	 * If this [Either] is [Left], performs the first given action with its value and returns this [Either].
+	 * If this [Either] is [Right], performs the second given action with its value and returns this [Either].
+	 *
+	 * @param f consumer to apply to a value of [Left]
+	 * @param g consumer to apply to a value of [Right]
+	 */
+	inline fun peek(f: (A) -> Unit, g: (B) -> Unit): Either<A, B> {
+		when (this) {
+			is Left -> f(leftValue)
+			is Right -> g(rightValue)
+		}
+		return this
+	}
+
 	data class Left<A, B>(val leftValue: A) : Either<A, B>() {
 		override fun <R> match(f: (A) -> R, g: (B) -> R): R = f(leftValue)
 	}
