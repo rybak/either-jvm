@@ -3,21 +3,23 @@ package dev.andrybak.util.function.java17;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EitherSerializationTest {
 	@SuppressWarnings("unchecked")
-	private static void testSerializationRoundTrip(Supplier<Either<String, Integer>> supplier, String expected,
+	private static void testSerializationRoundTrip(Either<String, Integer> original, String expected,
 			Function<String, String> a, Function<Integer, String> b)
 	{
 		byte[] bytes;
 		try {
 			ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
-			Either<String, Integer> original = supplier.get();
 			ObjectOutputStream output = new ObjectOutputStream(byteStream);
 			output.writeObject(original);
 			output.flush();
@@ -36,7 +38,7 @@ public class EitherSerializationTest {
 
 	@Test
 	void testThatLeftCanBeSerialized() {
-		testSerializationRoundTrip(() -> Either.left("foo"),
+		testSerializationRoundTrip(Either.left("foo"),
 				"foobar",
 				s -> s + "bar",
 				ignored -> {
@@ -48,7 +50,7 @@ public class EitherSerializationTest {
 	@Test
 	void testThatRightCanBeSerialized() {
 		testSerializationRoundTrip(
-				() -> Either.right(42),
+				Either.right(42),
 				"Right value: 42",
 				ignored -> {
 					throw new AssertionError("Deserialized Left value");
