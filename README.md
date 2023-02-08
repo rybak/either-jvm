@@ -37,15 +37,27 @@ language learning.
 
 ## `either-java8`
 
-Compatible with Java 8.
+Compatible with Java 8 and any later versions.
 
 ## `either-java17`
 
-Compatible with Java 17. Utilizes sealed classes feature which was introduced to
-Java in [JEP 409](https://openjdk.java.net/jeps/409). Can be used together with
-pattern matching in `switch` statements and expressions, which was introduced as
-a preview feature in [JEP 406](https://openjdk.java.net/jeps/406).
+Compatible with Java 17 and any later versions.  Utilizes the sealed classes
+feature which was introduced to Java in [JEP
+409](https://openjdk.java.net/jeps/409).
+
+Technically, it can be used together with pattern matching in `switch`
+statements and expressions, which was introduced as a preview feature in [JEP
+406](https://openjdk.java.net/jeps/406), but I don't recommend it – pattern
+matching in `switch` has changed a lot.  Latest preview in Java 20 is described
+in [JEP 433](https://openjdk.org/jeps/433).
 
 ## `either-kotlin`
 
 _TBD_
+
+_I haven't figured out yet how versioning of Kotlin language works yet, I'll add
+something here when I do._
+
+## Usage
+
+_Publishing to a public Maven repository hasn't been set up yet._
