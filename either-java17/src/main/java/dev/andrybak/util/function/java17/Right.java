@@ -23,4 +23,9 @@ public final class Right<A, B> extends Either<A, B> {
 	public <R> R match(Function<? super A, ? extends R> f, Function<? super B, ? extends R> g) {
 		return g.apply(b);
 	}
+
+	@Override
+	public String toString() {
+		return "Right(" + b + ')';
+	}
 }

@@ -118,6 +118,11 @@ public abstract class Either<A, B> implements Serializable {
 		public <R> R match(Function<? super A, ? extends R> f, Function<? super B, ? extends R> g) {
 			return f.apply(a);
 		}
+
+		@Override
+		public String toString() {
+			return "Left(" + a + ')';
+		}
 	}
 
 	/**
@@ -139,6 +144,11 @@ public abstract class Either<A, B> implements Serializable {
 		@Override
 		public <R> R match(Function<? super A, ? extends R> f, Function<? super B, ? extends R> g) {
 			return g.apply(b);
+		}
+
+		@Override
+		public String toString() {
+			return "Right(" + b + ')';
 		}
 	}
 }
