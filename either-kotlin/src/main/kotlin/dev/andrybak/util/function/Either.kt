@@ -81,7 +81,7 @@ sealed class Either<out A, out B> {
  * @param C return type of functions
  * @return result of applying one of the given functions to given [Either] value.
  */
-fun <A, B, C> either(f: (A) -> C, g: (B) -> C, e: Either<A, B>): C {
+inline fun <A, B, C> either(f: (A) -> C, g: (B) -> C, e: Either<A, B>): C {
 	return when (e) {
 		is Either.Left -> f(e.leftValue)
 		is Either.Right -> g(e.rightValue)
@@ -104,7 +104,7 @@ fun <A, B, C> either(f: (A) -> C, g: (B) -> C, e: Either<A, B>): C {
  * @param C return type of functions
  * @return function which takes an [Either] and returns result of applying the function corresponding to its type.
  */
-fun <A, B, C> either(f: (A) -> C, g: (B) -> C): (Either<A, B>) -> C {
+inline fun <A, B, C> either(crossinline f: (A) -> C, crossinline g: (B) -> C): (Either<A, B>) -> C {
 	return { e ->
 		when (e) {
 			is Either.Left -> f(e.leftValue)
