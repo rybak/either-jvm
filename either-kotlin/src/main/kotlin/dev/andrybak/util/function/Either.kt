@@ -17,7 +17,12 @@ sealed class Either<out A, out B> {
 	 * @param g function to apply to a value of [Right]
 	 * @param R return type of functions
 	 */
-	abstract fun <R> match(f: (A) -> R, g: (B) -> R): R
+	inline fun <R> match(f: (A) -> R, g: (B) -> R): R {
+		return when (this) {
+			is Left -> f(leftValue)
+			is Right -> g(rightValue)
+		}
+	}
 
 	/**
 	 * If this [Either] is [Left], performs the first given action with its value.
@@ -48,13 +53,9 @@ sealed class Either<out A, out B> {
 		return this
 	}
 
-	data class Left<A, B>(val leftValue: A) : Either<A, B>() {
-		override fun <R> match(f: (A) -> R, g: (B) -> R): R = f(leftValue)
-	}
+	data class Left<A, B>(val leftValue: A) : Either<A, B>()
 
-	data class Right<A, B>(val rightValue: B) : Either<A, B>() {
-		override fun <R> match(f: (A) -> R, g: (B) -> R): R = g(rightValue)
-	}
+	data class Right<A, B>(val rightValue: B) : Either<A, B>()
 
 	companion object {
 		/**
