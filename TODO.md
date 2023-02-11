@@ -1,5 +1,7 @@
 ## To Do
 
+- Publish something
+    * [ ] do I need an account for Maven Central or something
 - Foldable impl
     > https://hackage.haskell.org/package/base-4.15.0.0/docs/src/Data-Foldable.html#Foldable
 - add code samples
@@ -31,22 +33,18 @@
     > Figure out adding information to the manifest files of the published jars. Especially the implementation version field.
 - Maybe toOptional()?
     > A method that discards Left and wraps Right into an Optional.of
+- JMH microbenchmarks
+    * [ ] does kotlin's `inline` have an effect?
 
 ## Doing
 
 - equals & hashCode & Serializable
+    > Stalled while I figure out publishing
     * [x] Serializable
     * [x] Tests for serialization
     * [ ] equals & hashCode
     * [ ] tests for equals & hashCode
     * [ ] add documentation for equals and hashCode explaining dependence on types `A` and `B` implementing equals and hashCode
-- method that takes two Consumers
-    * [x] Method name candidates: accept, process, handle, apply, execute
-    * [x] peek
-    * [x] accept
-    * [ ] either-kotlin implementation
-    * [ ] add documentation comments
-    * [ ] merge to `main`
 
 ## Done
 
@@ -89,3 +87,10 @@
     > Does something like Either need PECS applied to generics in method `match`, for example? One might consider Either as a collection of elements of type A or B.
     * [x] see branch `generics` on GitHub/GitLab
     * [x] Kotlin
+- method that takes two Consumers
+    * [x] Method name candidates: accept, process, handle, apply, execute
+    * [x] peek
+    * [x] accept
+    * [x] either-kotlin implementation
+    * [x] add documentation comments
+    * [x] merge to `main`
