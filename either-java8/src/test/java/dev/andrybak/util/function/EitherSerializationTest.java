@@ -68,7 +68,6 @@ public class EitherSerializationTest {
 		);
 	}
 
-
 	@Test
 	void testThatNonSerializableLeftThrows() {
 		Either<NonSerializable, String> leftValue = Either.left(new NonSerializable("foo", 42));

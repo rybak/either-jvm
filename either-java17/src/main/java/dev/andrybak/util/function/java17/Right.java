@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.andrybak.util.function.java17;
 
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -34,6 +35,23 @@ public final class Right<A, B> extends Either<A, B> {
 	public Either<A, B> peek(Consumer<? super A> f, Consumer<? super B> g) {
 		g.accept(b);
 		return this;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+
+		Right<?, ?> right = (Right<?, ?>) o;
+
+		return Objects.equals(b, right.b);
+	}
+
+	@Override
+	public int hashCode() {
+		return b != null ? (b.hashCode() * 37) : 0;
 	}
 
 	@Override
