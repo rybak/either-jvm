@@ -42,9 +42,10 @@
     > Stalled while I figure out publishing
     * [x] Serializable
     * [x] Tests for serialization
-    * [ ] equals & hashCode
-    * [ ] tests for equals & hashCode
+    * [x] equals & hashCode
+    * [x] tests for equals & hashCode
     * [ ] add documentation for equals and hashCode explaining dependence on types `A` and `B` implementing equals and hashCode
+    * [ ] kotlin version
 
 ## Done
 
