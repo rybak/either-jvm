@@ -1,7 +1,5 @@
 ## To Do
 
-- Publish something
-    * [ ] do I need an account for Maven Central or something
 - Foldable impl
     > https://hackage.haskell.org/package/base-4.15.0.0/docs/src/Data-Foldable.html#Foldable
 - add code samples
@@ -46,6 +44,9 @@
     * [x] tests for equals & hashCode
     * [ ] add documentation for equals and hashCode explaining dependence on types `A` and `B` implementing equals and hashCode
     * [ ] kotlin version
+- Publish something
+    * [x] do I need an account for Maven Central or something
+    * [ ] See local notes
 
 ## Done
 
