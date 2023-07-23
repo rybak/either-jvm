@@ -70,11 +70,13 @@ sealed class Either<out A, out B> {
 		/**
 		 * Create a [Left] with given value of type `A`.
 		 */
+		@JvmStatic
 		fun <A, B> left(a: A): Either<A, B> = Left(a)
 
 		/**
 		 * Create a [Right] with given value of type `B`.
 		 */
+		@JvmStatic
 		fun <A, B> right(b: B): Either<A, B> = Right(b)
 	}
 }
