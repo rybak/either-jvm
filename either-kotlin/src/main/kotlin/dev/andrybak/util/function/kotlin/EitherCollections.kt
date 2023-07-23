@@ -2,7 +2,7 @@
 package dev.andrybak.util.function.kotlin
 
 /**
- * Returns a list of `A`s from [`Left`][Either.Left] values of this [`Iterable<Either<A, B>>`][Iterable].
+ * Returns a list of [A]s from [`Left`][Either.Left] values of this [`Iterable<Either<A, B>>`][Iterable].
  *
  * @param A type for [Either.Left]
  * @param B type for [Either.Right]
@@ -19,7 +19,7 @@ fun <A, B> Iterable<Either<A, B>>.lefts(): List<A> {
 }
 
 /**
- * Returns a list of `B`s from [`Right`][Either.Right] values of this [`Iterable<Either<A, B>>`][Iterable].
+ * Returns a list of [B]s from [`Right`][Either.Right] values of this [`Iterable<Either<A, B>>`][Iterable].
  *
  * @param A type for [Either.Left]
  * @param B type for [Either.Right]

@@ -5,7 +5,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
- * Right alternative of the {@link Either Either&lt;A, B&gt;} type, containing a value of type {@code B}.
+ * Right alternative of the {@link Either Either&lt;A, B&gt;} type, containing a value of type {@link B}.
  *
  * @param <A> type of the value in the corresponding {@link Left}
  * @param <B> type of the value in this {@code Right}

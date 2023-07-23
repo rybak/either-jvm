@@ -68,13 +68,21 @@ sealed class Either<out A, out B> {
 
 	companion object {
 		/**
-		 * Create a [Left] with given value of type `A`.
+		 * Returns a [Left] containing given value of type [A].
+		 *
+		 * @param A type for returned [Left]
+		 * @param B type for corresponding [Right]
+		 * @param a value to be stored in the returned [Left]
 		 */
 		@JvmStatic
 		fun <A, B> left(a: A): Either<A, B> = Left(a)
 
 		/**
-		 * Create a [Right] with given value of type `B`.
+		 * Returns a [Right] containing given value of type [B].
+		 *
+		 * @param A type for corresponding [Left]
+		 * @param B type for returned [Right]
+		 * @param b value to be stored in the returned [Right]
 		 */
 		@JvmStatic
 		fun <A, B> right(b: B): Either<A, B> = Right(b)
@@ -100,8 +108,8 @@ inline fun <A, B, C> either(f: (A) -> C, g: (B) -> C, e: Either<A, B>): C {
 }
 
 /**
- * Converts two functions, one which takes `A` and returns `C` and another which takes `B` and
- * returns `C`, into a function that takes an `Either` and returns `C`.
+ * Converts two functions, one which takes [A] and returns [C] and another which takes [B] and
+ * returns [C], into a function that takes an [`Either<A, B>`][Either] and returns [C].
  *
  * Second implementation of the function [either] to allow partial application.
  *
