@@ -4,6 +4,15 @@ package dev.andrybak.util.function
 /**
  * Implementation of functional programming abstraction `Either` for Kotlin.
  *
+ * Objects of type `Either<A, B>` represent values with two possibilities: they contain either a value
+ * of type [A] ([Left] alternative) or of type [B] ([Right] alternative).
+ * This type is often used to represent a result of an operation that may result in an error,
+ * for example, `Either<Exception, Result>`.
+ *
+ * The most basic and most important part of API of this class is instance method [match].
+ * It allows to structurally pattern match on the left and right alternatives and to access the values stored in
+ * objects of type `Either`.
+ *
  * Inspired by [Haskell's data type `Either`](https://hackage.haskell.org/package/base/docs/Data-Either.html).
  *
  * @param A type for [Left]

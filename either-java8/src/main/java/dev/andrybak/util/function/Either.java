@@ -7,7 +7,13 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
- * Java implementation of functional programming abstraction {@code Either} for Java 8.
+ * Implementation of functional programming abstraction {@code Either} for Java 8 and later versions.
+ * <p>
+ * The class {@code Either} represents values with two possibilities: an object of type {@code Either<A, B>} contains
+ * either a value of type {@code A} ({@link Left Left} alternative) or of type {@code B} ({@link Right Right}
+ * alternative). This type is often used to represent a result of an operation that may result in an error,
+ * for example, {@code Either<Exception, Result>}.
+ * </p>
  * <p>
  * The most basic and most important part of API of this class is instance method {@link #match(Function, Function)}.
  * It allows to structurally pattern match on the left and right alternatives and to access the values stored in
