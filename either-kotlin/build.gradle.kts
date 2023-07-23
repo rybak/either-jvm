@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 plugins {
 	id("either-jvm-build.java-library-conventions")
+	id("either-jvm-build.license-check")
 	kotlin("jvm") version "1.8.0"
 	`maven-publish`
 }
