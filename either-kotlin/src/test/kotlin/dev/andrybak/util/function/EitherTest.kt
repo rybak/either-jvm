@@ -143,7 +143,6 @@ internal class EitherTest {
 		})
 	}
 
-
 	@Test
 	fun testAcceptOnLeft() {
 		val leftValue: Either<String, Int> = Either.left("foo")

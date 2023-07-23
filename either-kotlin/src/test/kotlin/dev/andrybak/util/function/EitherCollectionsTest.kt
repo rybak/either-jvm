@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 internal class EitherCollectionsTest {
-
 	@Test
 	fun testThatLeftsWorks() {
 		val actual: List<String> = listOf<Either<String, Int>>(
