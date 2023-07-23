@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 plugins {
+	id("either-jvm-build.java-library-conventions")
 	kotlin("jvm") version "1.8.0"
-	`java-library`
 	`maven-publish`
 }
 
@@ -18,10 +18,6 @@ dependencies {
 
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 	testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.1")
-}
-
-tasks.named<Test>("test") {
-	useJUnitPlatform()
 }
 
 publishing {
