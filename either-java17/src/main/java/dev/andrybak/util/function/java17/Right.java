@@ -10,16 +10,7 @@ import java.util.function.Function;
  * @param <A> type of the value in the corresponding {@link Left}
  * @param <B> type of the value in this {@code Right}
  */
-public final class Right<A, B> extends Either<A, B> {
-	/**
-	 * The value of this {@link Right}.
-	 */
-	private final B b;
-
-	Right(B b) {
-		this.b = b;
-	}
-
+public record Right<A, B>(B b) implements Either<A, B> {
 	@Override
 	public <R> R match(Function<? super A, ? extends R> f, Function<? super B, ? extends R> g) {
 		return g.apply(b);
@@ -34,10 +25,5 @@ public final class Right<A, B> extends Either<A, B> {
 	public Either<A, B> peek(Consumer<? super A> f, Consumer<? super B> g) {
 		g.accept(b);
 		return this;
-	}
-
-	@Override
-	public String toString() {
-		return "Right(" + b + ')';
 	}
 }
