@@ -2,9 +2,6 @@
 
 - Foldable impl
     > https://hackage.haskell.org/package/base-4.15.0.0/docs/src/Data-Foldable.html#Foldable
-- add code samples
-    * [ ] code samples in README
-    * [ ] code samples as separate subproject
 - Use switch-pattern-matching in either-java17 (preview feature)
     * [ ] Wait until Java 17 is released
     * [ ] Wait until JDK with needed flag is available in Ubuntu https://stackoverflow.com/q/68702414/1083697
@@ -42,11 +39,16 @@
     * [x] Tests for serialization
     * [x] equals & hashCode
     * [x] tests for equals & hashCode
+    * [x] merge to main
     * [ ] add documentation for equals and hashCode explaining dependence on types `A` and `B` implementing equals and hashCode
     * [ ] kotlin version
+    * [ ] merge to main
 - Publish something
     * [x] do I need an account for Maven Central or something
     * [ ] See local notes
+- add code samples
+    * [ ] code samples in README
+    * [x] code samples as separate subproject
 
 ## Done
 
