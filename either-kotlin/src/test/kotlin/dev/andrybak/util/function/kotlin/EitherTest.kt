@@ -1,4 +1,4 @@
-package dev.andrybak.util.function
+package dev.andrybak.util.function.kotlin
 
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals

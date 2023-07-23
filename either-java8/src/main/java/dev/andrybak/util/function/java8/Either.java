@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-package dev.andrybak.util.function;
+package dev.andrybak.util.function.java8;
 
 import java.io.Serializable;
 import java.util.Objects;

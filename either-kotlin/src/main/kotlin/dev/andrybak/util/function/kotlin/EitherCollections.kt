@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-package dev.andrybak.util.function
+package dev.andrybak.util.function.kotlin
 
 /**
  * Returns a list of `A`s from [`Left`][Either.Left] values of this [`Iterable<Either<A, B>>`][Iterable].

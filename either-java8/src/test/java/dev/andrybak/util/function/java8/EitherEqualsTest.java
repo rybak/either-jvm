@@ -1,4 +1,5 @@
-package dev.andrybak.util.function;
+// SPDX-License-Identifier: MIT
+package dev.andrybak.util.function.java8;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

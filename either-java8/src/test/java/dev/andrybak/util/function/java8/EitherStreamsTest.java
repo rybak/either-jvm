@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
-package dev.andrybak.util.function;
+package dev.andrybak.util.function.java8;
 
+import dev.andrybak.util.function.java8.Either;
+import dev.andrybak.util.function.java8.EitherStreams;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

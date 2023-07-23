@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-package dev.andrybak.util.function
+package dev.andrybak.util.function.kotlin
 
 /**
  * Implementation of functional programming abstraction `Either` for Kotlin.
