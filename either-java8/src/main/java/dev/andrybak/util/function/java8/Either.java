@@ -146,7 +146,7 @@ public abstract class Either<A, B> implements Serializable {
 	/**
 	 * Left alternative of the {@link Either Either&lt;A, B&gt;} type, containing a value of type {@link A}.
 	 *
-	 * @param <A> type of the value in this {@code Left}
+	 * @param <A> type of the value in this {@link Left}
 	 * @param <B> type of the value in the corresponding {@link Right}
 	 */
 	public static final class Left<A, B> extends Either<A, B> {
@@ -201,7 +201,7 @@ public abstract class Either<A, B> implements Serializable {
 	 * Right alternative of the {@link Either Either&lt;A, B&gt;} type, containing a value of type {@link B}.
 	 *
 	 * @param <A> type of the value in the corresponding {@link Left}
-	 * @param <B> type of the value in this {@code Right}
+	 * @param <B> type of the value in this {@link Right}
 	 */
 	public static final class Right<A, B> extends Either<A, B> {
 		/**

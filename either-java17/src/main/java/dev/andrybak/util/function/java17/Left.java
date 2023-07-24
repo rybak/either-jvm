@@ -7,7 +7,7 @@ import java.util.function.Function;
 /**
  * Left alternative of the {@link Either Either&lt;A, B&gt;} type, containing a value of type {@link A}.
  *
- * @param <A> type of the value in this {@code Left}
+ * @param <A> type of the value in this {@link Left}
  * @param <B> type of the value in the corresponding {@link Right}
  */
 public record Left<A, B>(A a) implements Either<A, B> {
