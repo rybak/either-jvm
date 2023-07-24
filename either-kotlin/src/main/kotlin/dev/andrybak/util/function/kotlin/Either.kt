@@ -62,8 +62,20 @@ sealed class Either<out A, out B> {
 		return this
 	}
 
+	/**
+	 * Left alternative of the [Either&lt;A, B&gt;][Either] type, containing a value of type [A].
+	 *
+	 * @param A type of the value in this [Left]
+	 * @param B type of the value in the corresponding [Right]
+	 */
 	data class Left<A, B>(val leftValue: A) : Either<A, B>()
 
+	/**
+	 * Right alternative of the [Either&lt;A, B&gt;][Either] type, containing a value of type [B].
+	 *
+	 * @param A type of the value in the corresponding [Left]
+	 * @param B type of the value in this [Right]
+	 */
 	data class Right<A, B>(val rightValue: B) : Either<A, B>()
 
 	companion object {
