@@ -3,6 +3,7 @@ plugins {
 	id("either-jvm-build.java-library-conventions")
 	id("either-jvm-build.license-check")
 	kotlin("jvm") version "1.8.20"
+	id("org.jetbrains.dokka") version "1.8.20"
 	`maven-publish`
 }
 
