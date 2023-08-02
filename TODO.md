@@ -33,6 +33,8 @@
 
 ## Doing
 
+- Fix Javadocs
+    > It seems that {@link A} for type params in Javadoc is rendered badly. It needs to be fixed.
 - equals & hashCode & Serializable
     > Stalled while I figure out publishing
     * [x] Serializable
@@ -43,9 +45,6 @@
     * [ ] add documentation for equals and hashCode explaining dependence on types `A` and `B` implementing equals and hashCode
     * [ ] kotlin version
     * [ ] merge to main
-- Publish something
-    * [x] do I need an account for Maven Central or something
-    * [ ] See local notes
 - add code samples
     * [ ] code samples in README
     * [x] code samples as separate subproject
@@ -98,3 +97,7 @@
     * [x] either-kotlin implementation
     * [x] add documentation comments
     * [x] merge to `main`
+- Publish something
+    > Version 0.2-SNAPSHOT has been published!
+    * [x] do I need an account for Maven Central or something
+    * [x] See local notes
