@@ -9,7 +9,7 @@ import java.util.function.Function;
  * Implementation of functional programming abstraction {@code Either} for Java 17 and later versions.
  * <p>
  * Objects of type {@code Either<A, B>} represent values with two possibilities: they contain either a value
- * of type {@link A} ({@link Left} alternative) or of type {@link B} ({@link Right} alternative).
+ * of type {@code A} ({@link Left} alternative) or of type {@code B} ({@link Right} alternative).
  * This type is often used to represent a result of an operation that may result in an error,
  * for example, {@code Either<Exception, Result>}.
  * </p>
@@ -19,7 +19,7 @@ import java.util.function.Function;
  * objects of type {@code Either}.
  * </p>
  * <p>
- * If both types {@link A} and {@link B} are {@link Serializable} then {@code Either<A, B>} can be serialized.
+ * If both types {@code A} and {@code B} are {@link Serializable} then {@code Either<A, B>} can be serialized.
  * </p>
  * <p>
  * Inspired by
@@ -31,7 +31,7 @@ import java.util.function.Function;
  */
 public sealed interface Either<A, B> extends Serializable permits Left, Right {
 	/**
-	 * Returns a {@link Left} containing given value of type {@link A}.
+	 * Returns a {@link Left} containing given value of type {@code A}.
 	 *
 	 * @param <A> type for returned {@link Left}
 	 * @param <B> type for corresponding {@link Right}
@@ -42,7 +42,7 @@ public sealed interface Either<A, B> extends Serializable permits Left, Right {
 	}
 
 	/**
-	 * Returns a {@link Right} containing given value of type {@link B}.
+	 * Returns a {@link Right} containing given value of type {@code B}.
 	 *
 	 * @param <A> type for corresponding {@link Left}
 	 * @param <B> type for returned {@link Right}
@@ -53,8 +53,8 @@ public sealed interface Either<A, B> extends Serializable permits Left, Right {
 	}
 
 	/**
-	 * Converts two functions, one which takes {@link A} and returns {@link C} and another which takes {@link B} and
-	 * returns {@link C}, into a {@link Function} that takes an {@code Either<A, B>} and returns {@link C}.
+	 * Converts two functions, one which takes {@code A} and returns {@code C} and another which takes {@code B} and
+	 * returns {@code C}, into a {@link Function} that takes an {@code Either<A, B>} and returns {@code C}.
 	 * This can be useful for usage with {@link java.util.stream.Stream} API.
 	 * <p>
 	 * Implementation of

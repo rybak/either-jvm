@@ -10,7 +10,7 @@ import java.util.function.Function;
  * Implementation of functional programming abstraction {@code Either} for Java 8 and later versions.
  * <p>
  * The class {@code Either} represents values with two possibilities: an object of type {@code Either<A, B>} contains
- * either a value of type {@link A} ({@link Left Left} alternative) or of type {@link B} ({@link Right Right}
+ * either a value of type {@code A} ({@link Left Left} alternative) or of type {@code B} ({@link Right Right}
  * alternative). This type is often used to represent a result of an operation that may result in an error,
  * for example, {@code Either<Exception, Result>}.
  * </p>
@@ -24,7 +24,7 @@ import java.util.function.Function;
  * <a href="https://hackage.haskell.org/package/base/docs/Data-Either.html">Haskell's type {@code Either}</a>.
  * </p>
  * <p>
- * If both types {@link A} and {@link B} are {@link Serializable} then {@code Either<A, B>} can be serialized.
+ * If both types {@code A} and {@code B} are {@link Serializable} then {@code Either<A, B>} can be serialized.
  * </p>
  *
  * @param <A> type for {@link Left}
@@ -38,7 +38,7 @@ public abstract class Either<A, B> implements Serializable {
 	}
 
 	/**
-	 * Returns a {@link Left} containing given value of type {@link A}.
+	 * Returns a {@link Left} containing given value of type {@code A}.
 	 *
 	 * @param <A> type for returned {@link Left}
 	 * @param <B> type for corresponding {@link Right}
@@ -49,7 +49,7 @@ public abstract class Either<A, B> implements Serializable {
 	}
 
 	/**
-	 * Returns a {@link Right} containing given value of type {@link B}.
+	 * Returns a {@link Right} containing given value of type {@code B}.
 	 *
 	 * @param <A> type for corresponding {@link Left}
 	 * @param <B> type for returned {@link Right}
@@ -60,8 +60,8 @@ public abstract class Either<A, B> implements Serializable {
 	}
 
 	/**
-	 * Converts two functions, one which takes {@link A} and returns {@link C} and another which takes {@link B} and
-	 * returns {@link C}, into a {@link Function} that takes an {@code Either<A, B>} and returns {@link C}.
+	 * Converts two functions, one which takes {@code A} and returns {@code C} and another which takes {@code B} and
+	 * returns {@code C}, into a {@link Function} that takes an {@code Either<A, B>} and returns {@code C}.
 	 * This can be useful for usage with {@link java.util.stream.Stream} API.
 	 * <p>
 	 * Implementation of
@@ -144,7 +144,7 @@ public abstract class Either<A, B> implements Serializable {
 	public abstract Either<A, B> peek(Consumer<? super A> f, Consumer<? super B> g);
 
 	/**
-	 * Left alternative of the {@link Either Either&lt;A, B&gt;} type, containing a value of type {@link A}.
+	 * Left alternative of the {@link Either Either&lt;A, B&gt;} type, containing a value of type {@code A}.
 	 *
 	 * @param <A> type of the value in this {@link Left}
 	 * @param <B> type of the value in the corresponding {@link Right}
@@ -198,7 +198,7 @@ public abstract class Either<A, B> implements Serializable {
 	}
 
 	/**
-	 * Right alternative of the {@link Either Either&lt;A, B&gt;} type, containing a value of type {@link B}.
+	 * Right alternative of the {@link Either Either&lt;A, B&gt;} type, containing a value of type {@code B}.
 	 *
 	 * @param <A> type of the value in the corresponding {@link Left}
 	 * @param <B> type of the value in this {@link Right}

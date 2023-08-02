@@ -5,7 +5,7 @@ package dev.andrybak.util.function.kotlin
  * Implementation of functional programming abstraction `Either` for Kotlin.
  *
  * Objects of type `Either<A, B>` represent values with two possibilities: they contain either a value
- * of type [A] ([Left] alternative) or of type [B] ([Right] alternative).
+ * of type `A` ([Left] alternative) or of type `B` ([Right] alternative).
  * This type is often used to represent a result of an operation that may result in an error,
  * for example, `Either<Exception, Result>`.
  *
@@ -63,7 +63,7 @@ sealed class Either<out A, out B> {
 	}
 
 	/**
-	 * Left alternative of the [Either&lt;A, B&gt;][Either] type, containing a value of type [A].
+	 * Left alternative of the [Either&lt;A, B&gt;][Either] type, containing a value of type `A`.
 	 *
 	 * @param A type of the value in this [Left]
 	 * @param B type of the value in the corresponding [Right]
@@ -71,7 +71,7 @@ sealed class Either<out A, out B> {
 	data class Left<A, B>(val leftValue: A) : Either<A, B>()
 
 	/**
-	 * Right alternative of the [Either&lt;A, B&gt;][Either] type, containing a value of type [B].
+	 * Right alternative of the [Either&lt;A, B&gt;][Either] type, containing a value of type `B`.
 	 *
 	 * @param A type of the value in the corresponding [Left]
 	 * @param B type of the value in this [Right]
@@ -80,7 +80,7 @@ sealed class Either<out A, out B> {
 
 	companion object {
 		/**
-		 * Returns a [Left] containing given value of type [A].
+		 * Returns a [Left] containing given value of type `A`.
 		 *
 		 * @param A type for returned [Left]
 		 * @param B type for corresponding [Right]
@@ -90,7 +90,7 @@ sealed class Either<out A, out B> {
 		fun <A, B> left(a: A): Either<A, B> = Left(a)
 
 		/**
-		 * Returns a [Right] containing given value of type [B].
+		 * Returns a [Right] containing given value of type `B`.
 		 *
 		 * @param A type for corresponding [Left]
 		 * @param B type for returned [Right]
@@ -120,8 +120,8 @@ inline fun <A, B, C> either(f: (A) -> C, g: (B) -> C, e: Either<A, B>): C {
 }
 
 /**
- * Converts two functions, one which takes [A] and returns [C] and another which takes [B] and
- * returns [C], into a function that takes an [`Either<A, B>`][Either] and returns [C].
+ * Converts two functions, one which takes `A` and returns `C` and another which takes `B` and
+ * returns `C`, into a function that takes an [`Either<A, B>`][Either] and returns `C`.
  *
  * Second implementation of the function [either] to allow partial application.
  *
