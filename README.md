@@ -8,11 +8,14 @@ form of a JVM class.
 
 Experience of people using functional programming, with Haskell in particular,
 has shown that [Either](https://hackage.haskell.org/package/base/docs/Data-Either.html)
-is a very useful data type.  There are several implementations of it for JVM:
+is a very useful data type.  There are several implementations of it for JVM and
+for Kotlin Multiplatform:
 
-- https://www.javadoc.io/doc/io.vavr/vavr/latest/io/vavr/control/Either.html
-- https://github.com/functionaljava/functionaljava/blob/series/5.x/core/src/main/java/fj/data/Either.java
-- https://github.com/meoyawn/kotlin-either
+- <https://www.javadoc.io/doc/io.vavr/vavr/latest/io/vavr/control/Either.html>
+- <https://github.com/functionaljava/functionaljava/blob/series/5.x/core/src/main/java/fj/data/Either.java>
+- <https://github.com/meoyawn/kotlin-either>
+- <https://github.com/aSoft-Ltd/either>
+- <https://github.com/JavierSegoviaCordoba/network-either-kmp>
 
 However, each of them has some combination of the following properties, which
 make their usage inconvenient or cumbersome:
@@ -25,6 +28,8 @@ make their usage inconvenient or cumbersome:
 - don't provide APIs with conventional naming structure
 - don't utilize wildcard type parameters, making it hard to use functional
   variables and method references with inexact type
+- are not abstract enough, with specialization for something specific, like
+  passing an `Either` over the network
 
 Either-JVM is also a personal exercise in library writing and programming
 language learning.
