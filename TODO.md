@@ -1,5 +1,9 @@
 ## To Do
 
+- All .idea/logo.png
+    > Just for fun! There's already a local branch with a design
+- Move EitherStreams to a separate jar
+    > Not sure if this is a good idea, but the inter-operation with Stream doesn't seem like a popular use-case for Either.  Same applies for the collections in the Kotlin version.
 - Foldable impl
     > https://hackage.haskell.org/package/base-4.15.0.0/docs/src/Data-Foldable.html#Foldable
 - Use switch-pattern-matching in either-java17 (preview feature)
@@ -33,8 +37,6 @@
 
 ## Doing
 
-- Fix Javadocs
-    > It seems that {@link A} for type params in Javadoc is rendered badly. It needs to be fixed.
 - equals & hashCode & Serializable
     > Stalled while I figure out publishing
     * [x] Serializable
@@ -48,6 +50,8 @@
 - add code samples
     * [ ] code samples in README
     * [x] code samples as separate subproject
+- Merge publishing
+    > Version 0.2.0-SNAPSHOT has been published from a branch with WIP code for publishing. It needs to be cleaned up and merged to main.
 
 ## Done
 
@@ -101,3 +105,8 @@
     > Version 0.2-SNAPSHOT has been published!
     * [x] do I need an account for Maven Central or something
     * [x] See local notes
+- Fix Javadocs
+    > It seems that {@link A} for type params in Javadoc is rendered badly. It needs to be fixed. I've reported the bug, it got "internal review ID : 9075760".
+    * [x] Find if there's a JDK ticket about it
+    * [x] remove @links for type params
+    * [x] remove [A] links for type params in Kotlin
