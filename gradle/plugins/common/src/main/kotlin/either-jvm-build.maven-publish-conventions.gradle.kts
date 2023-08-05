@@ -12,6 +12,9 @@ publishing {
 			} else {
 				from(components.getByName("java"))
 			}
+			pom {
+				description.set(project.description)
+			}
 		}
 	}
 }
