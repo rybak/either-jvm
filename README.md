@@ -67,4 +67,27 @@ something here when I do._
 
 ## Usage
 
-_Publishing to a public Maven repository hasn't been set up yet._
+So far, only snapshots versions are available through Sonatype Nexus repository.
+You can browse the published libraries:
+
+- via [Nexus web GUI][NexusSnapshotsWebGui]
+- via [index][NexusSnapshotsIndex]
+
+### Gradle
+
+```gradle
+repositories {
+	maven {
+		name = "Sonatype Nexus Snapshots"
+		url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+	}
+}
+dependencies {
+	implementation(group = "dev.andrybak.either-jvm", name = "either-java8", version = "0.2-SNAPSHOT")
+	implementation(group = "dev.andrybak.either-jvm", name = "either-java17", version = "0.2-SNAPSHOT")
+	implementation(group = "dev.andrybak.either-jvm", name = "either-kotlin", version = "0.2-SNAPSHOT")
+}
+```
+
+[NexusSnapshotsWebGui]: https://s01.oss.sonatype.org/index.html#view-repositories;snapshots~browsestorage~/dev/andrybak/either-jvm/either-kotlin/maven-metadata.xml.sha512
+[NexusSnapshotsIndex]: https://s01.oss.sonatype.org/content/repositories/snapshots/dev/andrybak/either-jvm/
