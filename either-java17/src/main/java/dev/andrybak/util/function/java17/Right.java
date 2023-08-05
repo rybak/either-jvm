@@ -11,7 +11,7 @@ import java.util.function.Function;
  * @param <B> type of the value in this {@link Right}
  * @param b   the {@code B} value stored in this {@link Left}
  */
-public record Right<A, B>(B b) implements Either<A, B> {
+record Right<A, B>(B b) implements Either<A, B> {
 	@Override
 	public <R> R match(Function<? super A, ? extends R> f, Function<? super B, ? extends R> g) {
 		return g.apply(b);
