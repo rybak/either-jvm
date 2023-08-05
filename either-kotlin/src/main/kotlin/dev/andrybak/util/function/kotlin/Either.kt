@@ -25,6 +25,7 @@ sealed class Either<out A, out B> {
 	 * @param f function to apply to a value of [Left]
 	 * @param g function to apply to a value of [Right]
 	 * @param R return type of functions
+	 * @return result of applying one of the functions to this [Either]
 	 */
 	inline fun <R> match(f: (A) -> R, g: (B) -> R): R {
 		return when (this) {
@@ -67,6 +68,7 @@ sealed class Either<out A, out B> {
 	 *
 	 * @param A type of the value in this [Left]
 	 * @param B type of the value in the corresponding [Right]
+	 * @param leftValue the `A` value stored in this [Left]
 	 */
 	data class Left<A, B>(val leftValue: A) : Either<A, B>()
 
@@ -75,6 +77,7 @@ sealed class Either<out A, out B> {
 	 *
 	 * @param A type of the value in the corresponding [Left]
 	 * @param B type of the value in this [Right]
+	 * @param rightValue the `B` value stored in this [Right]
 	 */
 	data class Right<A, B>(val rightValue: B) : Either<A, B>()
 

@@ -36,6 +36,7 @@ public sealed interface Either<A, B> extends Serializable permits Left, Right {
 	 * @param <A> type for returned {@link Left}
 	 * @param <B> type for corresponding {@link Right}
 	 * @param a   value to be stored in the returned {@link Left}
+	 * @return a {@link Left} with the given value
 	 */
 	static <A, B> Either<A, B> left(A a) {
 		return new Left<>(a);
@@ -47,6 +48,7 @@ public sealed interface Either<A, B> extends Serializable permits Left, Right {
 	 * @param <A> type for corresponding {@link Left}
 	 * @param <B> type for returned {@link Right}
 	 * @param b   value to be stored in the returned {@link Right}
+	 * @return a {@link Right} with the given value
 	 */
 	static <A, B> Either<A, B> right(B b) {
 		return new Right<>(b);
@@ -83,6 +85,7 @@ public sealed interface Either<A, B> extends Serializable permits Left, Right {
 	 *
 	 * @param f   function to apply to a value of {@link Left}
 	 * @param g   function to apply to a value of {@link Right}
+	 * @param e   an {@link Either} to apply the given functions to
 	 * @param <A> type for {@link Left}
 	 * @param <B> type for {@link Right}
 	 * @param <C> return type of functions
@@ -104,6 +107,7 @@ public sealed interface Either<A, B> extends Serializable permits Left, Right {
 	 * @param f   function to apply to a value of {@link Left}
 	 * @param g   function to apply to a value of {@link Right}
 	 * @param <R> return type of functions
+	 * @return result of applying one of the functions to this {@link Either}
 	 */
 	<R> R match(Function<? super A, ? extends R> f, Function<? super B, ? extends R> g);
 

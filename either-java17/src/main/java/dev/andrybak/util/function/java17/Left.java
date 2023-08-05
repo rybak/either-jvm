@@ -9,6 +9,7 @@ import java.util.function.Function;
  *
  * @param <A> type of the value in this {@link Left}
  * @param <B> type of the value in the corresponding {@link Right}
+ * @param a   the {@code A} value stored in this {@link Left}
  */
 public record Left<A, B>(A a) implements Either<A, B> {
 	@Override

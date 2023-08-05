@@ -16,8 +16,9 @@ public class EitherStreams {
 	 * Returns a stream consisting of objects of type {@code A} taken from elements of given stream of {@link Either}
 	 * that are {@link Either.Left}.
 	 *
-	 * @param <A> type for {@link Either.Left}
-	 * @param <B> type for {@link Either.Right}
+	 * @param <A>          type for {@link Either.Left}
+	 * @param <B>          type for {@link Either.Right}
+	 * @param eitherStream a {@link Stream} of {@link Either Either&lt;A, B&gt;}
 	 * @return {@link Stream} of {@code A} from {@link Either.Left Left} values of given {@link Stream}
 	 */
 	public static <A, B> Stream<A> lefts(Stream<? extends Either<? extends A, ? extends B>> eitherStream) {
@@ -35,8 +36,9 @@ public class EitherStreams {
 	 * Returns a stream consisting of objects of type {@code B} taken from elements of given stream of {@link Either}
 	 * that are {@link Either.Right}.
 	 *
-	 * @param <A> type for {@link Either.Left}
-	 * @param <B> type for {@link Either.Right}
+	 * @param <A>          type for {@link Either.Left}
+	 * @param <B>          type for {@link Either.Right}
+	 * @param eitherStream a {@link Stream} of {@link Either Either&lt;A, B&gt;}
 	 * @return {@link Stream} of {@code B} from {@link Either.Right Right} values of given {@link Stream}
 	 */
 	public static <A, B> Stream<B> rights(Stream<? extends Either<? extends A, ? extends B>> eitherStream) {
