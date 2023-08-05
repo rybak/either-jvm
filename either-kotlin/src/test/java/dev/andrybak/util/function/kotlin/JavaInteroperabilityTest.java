@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 package dev.andrybak.util.function.kotlin;
 
 import org.junit.jupiter.api.Assertions;
