@@ -2,10 +2,6 @@
 
 subprojects {
 	group = "dev.andrybak.either-jvm"
-
-	repositories {
-		mavenCentral()
-	}
 }
 
 tasks.wrapper {
