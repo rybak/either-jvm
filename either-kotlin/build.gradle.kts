@@ -4,7 +4,7 @@ plugins {
 	id("either-jvm-build.license-check")
 	kotlin("jvm") version "1.8.20"
 	id("org.jetbrains.dokka") version "1.8.20"
-	`maven-publish`
+	id("either-jvm-build.maven-publish-conventions")
 }
 
 version = "0.2-SNAPSHOT"
@@ -20,12 +20,4 @@ dependencies {
 
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 	testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.1")
-}
-
-publishing {
-	publications {
-		create<MavenPublication>("eitherKotlinJar") {
-			from(components.getByName("kotlin"))
-		}
-	}
 }
