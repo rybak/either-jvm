@@ -54,7 +54,9 @@ Technically, it can be used together with pattern matching in `switch`
 statements and expressions, which was introduced as a preview feature in [JEP
 406](https://openjdk.java.net/jeps/406), but I don't recommend it – pattern
 matching in `switch` has changed a lot.  Latest preview in Java 20 is described
-in [JEP 433](https://openjdk.org/jeps/433).
+in [JEP 433](https://openjdk.org/jeps/433).  [JEP 441: Pattern Matching for
+switch](https://openjdk.org/jeps/441) will be released in Java 21 in September
+of 2023.
 
 ## `either-kotlin`
 
