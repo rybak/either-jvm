@@ -11,6 +11,7 @@ repositories {
 }
 
 java {
+	withJavadocJar()
 	withSourcesJar()
 }
 
@@ -21,4 +22,12 @@ tasks.withType<JavaCompile> {
 
 tasks.getByName<Test>("test") {
 	useJUnitPlatform()
+}
+
+tasks.withType<Javadoc> {
+	options {
+		encoding = "UTF-8"
+		locale = "en"
+		(this as StandardJavadocDocletOptions).tags?.add("implNote")
+	}
 }
