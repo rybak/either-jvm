@@ -1,17 +1,25 @@
 ## To Do
 
-- All .idea/logo.png
+- Git Version Convention
+    > By default `maven-publish` does some terrible timestamps in the version strings of snapshots. I should make the Gradle build use Git tags to figure out the version.
+    * [ ] Copy Gradle code from Resoday
+    * [ ] Convert it into a gradle/plugins convention plugin
+    * [ ] use -SNAPSHOT instead of -dirty for Maven compatibility and such (still haven't figured out how versioning in Maven works exactly, *sigh*)
+- Nexus Staging
+    > There is a feature of Nexus that I don't quite grok yet. It should be useful when publishing release artifacts (non-snapshots).
+    * [ ] Wait for https://issues.sonatype.org/browse/OSSRH-93975
+    * [ ] Add stagingProfileId to build script
+- Add .idea/logo.png
     > Just for fun! There's already a local branch with a design
-- Move EitherStreams to a separate jar
-    > Not sure if this is a good idea, but the inter-operation with Stream doesn't seem like a popular use-case for Either.  Same applies for the collections in the Kotlin version.
 - Foldable impl
     > https://hackage.haskell.org/package/base-4.15.0.0/docs/src/Data-Foldable.html#Foldable
 - Use switch-pattern-matching in either-java17 (preview feature)
-    * [ ] Wait until Java 17 is released
+    * [x] Wait until Java 17 is released
     * [ ] Wait until JDK with needed flag is available in Ubuntu https://stackoverflow.com/q/68702414/1083697
-    * [ ] https://openjdk.java.net/jeps/406 -- pattern matching is preview feature in Java 17
+    * [x] https://openjdk.java.net/jeps/406 -- pattern matching is preview feature in Java 17
     * [ ] maybe in a separate module either-java17-samples?
 - Kotlin: data class?
+    > Already implemented, but need to check a couple of details.
     * [ ] Are data classes a good idea for Left and Right? Left#a and Right#b seemingly make it too attached to <A, B> type parameter naming
     * [ ] are data classes with all fields private  possible?
     * [ ] data class Left(private val a: A) ???
@@ -21,6 +29,7 @@
     > Since we'll make classes Serialiazeable, there should be a JSON serialization implementation for popular JSON libraries.
     * [ ] either-java8-gson -- not possible, because of type erasure -- but we could help users make their own Json(De)Serializers, maybe
     * [ ] either-java8-jackson
+    * [ ] either-java17-gson -- Gson already supports records, so should be fine-ish
     * [ ] ???
 - kotlin-mpp
     * [ ] https://kotlinlang.org/docs/mpp-create-lib.html
@@ -34,9 +43,21 @@
     > A method that discards Left and wraps Right into an Optional.of
 - JMH microbenchmarks
     * [ ] does kotlin's `inline` have an effect?
+- Consider publishing Javadocs on the web
+    * [ ] Option 1: https://github.com/ajoberstar/gradle-git-publish
+- Include LICENSE.md in jar
+    > Similarly to "Copy Commit Reference" plugin for IntelliJ, it won't hurt if LICENSE.md was included in the jars.
 
 ## Doing
 
+- add code samples
+    * [ ] code samples in README
+    * [x] code samples as separate subproject
+- Move EitherStreams to a separate jar
+    > Not sure if this is a good idea, but the inter-operation with Stream doesn't seem like a popular use-case for Either.  Same applies for the collections in the Kotlin version.
+    * [ ] Comparator could also be in that separate jar.
+    * [ ] Maybe name it "either-<variant>-utils"
+    * [ ] Comparator and Streams/Collection support  could be moved to samples -- galaxy brain move to use samples as a preview/staging for possible upgrade to the API status. It helps that neither of the expansions (and probably almost none at all) need package-private access, and can be implemented on the  "outside".
 - equals & hashCode & Serializable
     > Stalled while I figure out publishing
     * [x] Serializable
@@ -47,11 +68,6 @@
     * [ ] add documentation for equals and hashCode explaining dependence on types `A` and `B` implementing equals and hashCode
     * [ ] kotlin version
     * [ ] merge to main
-- add code samples
-    * [ ] code samples in README
-    * [x] code samples as separate subproject
-- Merge publishing
-    > Version 0.2.0-SNAPSHOT has been published from a branch with WIP code for publishing. It needs to be cleaned up and merged to main.
 
 ## Done
 
@@ -110,3 +126,8 @@
     * [x] Find if there's a JDK ticket about it
     * [x] remove @links for type params
     * [x] remove [A] links for type params in Kotlin
+- Merge publishing
+    > Version 0.2.0-SNAPSHOT has been published from a branch with WIP code for publishing. It needs to be cleaned up and merged to main.
+    * [x] Clean up publishing code
+    * [x] Test publishing again
+    * [x] merge to 'main'
