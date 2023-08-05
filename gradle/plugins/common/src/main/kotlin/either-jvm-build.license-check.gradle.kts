@@ -14,15 +14,13 @@ val checkSpdxLicenseIdentifiersTask = tasks.register("checkSpdxLicenseIdentifier
 	outputs.file(licenseCheckMarkerFile.absolutePath)
 	doLast {
 		val marker = "SPDX-License-Identifier"
-		sourceSets.all {
-			allSource.sourceDirectories.asFileTree.forEach {
-				if (it.extension == "java" || it.extension == "kt") {
-					val firstLine = it.bufferedReader().readLine()
-					if (!firstLine.contains(marker)) {
-						throw GradleException("Missing marker '${marker}' in file '$it'")
-					}
-					logger.info("${it.name} - OK")
+		inputs.files.forEach {
+			if (it.extension == "java" || it.extension == "kt") {
+				val firstLine = it.bufferedReader().readLine()
+				if (!firstLine.contains(marker)) {
+					throw GradleException("Missing marker '${marker}' in file '$it'")
 				}
+				logger.info("${it.name} - OK")
 			}
 		}
 		licenseCheckMarkerFile.writeText(Instant.now().toString())
