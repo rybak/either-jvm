@@ -6,6 +6,7 @@ plugins {
 }
 
 version = "0.2-SNAPSHOT"
+description = "Type Either for Java 8+"
 
 java {
 	toolchain {

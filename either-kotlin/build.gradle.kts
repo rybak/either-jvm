@@ -8,6 +8,7 @@ plugins {
 }
 
 version = "0.2-SNAPSHOT"
+description = "Type Either for Kotlin"
 
 kotlin {
 	jvmToolchain {
