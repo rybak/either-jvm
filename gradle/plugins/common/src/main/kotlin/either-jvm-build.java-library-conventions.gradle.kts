@@ -4,6 +4,8 @@ plugins {
 	`java-library`
 }
 
+group = "dev.andrybak.either-jvm"
+
 repositories {
 	mavenCentral()
 }
