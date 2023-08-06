@@ -47,9 +47,12 @@
     * [ ] Option 1: https://github.com/ajoberstar/gradle-git-publish
 - Include LICENSE.md in jar
     > Similarly to "Copy Commit Reference" plugin for IntelliJ, it won't hurt if LICENSE.md was included in the jars.
+- README badges
+    * [ ] https://img.shields.io/maven-metadata/v.svg?label=MavenCentral&metadataUrl=https%3A%2F%2Frepo1.maven.org%2Fmaven2%2Fdev%2Fandrybak%2Feither-jvm%2Feither-java8%2Fmaven-metadata.xml
 
 ## Doing
 
+- Use Gradle Version Catalog
 - add code samples
     * [ ] code samples in README
     * [x] code samples as separate subproject
