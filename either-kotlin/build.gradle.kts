@@ -1,4 +1,6 @@
 // SPDX-License-Identifier: MIT
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
 	id("either-jvm-build.java-library-conventions")
 	id("either-jvm-build.license-check")
@@ -13,6 +15,13 @@ description = "Type Either for Kotlin"
 kotlin {
 	jvmToolchain {
 		languageVersion.set(JavaLanguageVersion.of(17))
+	}
+}
+
+tasks.withType<KotlinCompile>().configureEach {
+	kotlinOptions {
+		apiVersion = "1.8"
+		languageVersion = "1.8"
 	}
 }
 
