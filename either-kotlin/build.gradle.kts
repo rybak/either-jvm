@@ -19,7 +19,7 @@ kotlin {
 dependencies {
 	implementation(kotlin("stdlib"))
 
-	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-	testImplementation(platform("org.junit:junit-bom:5.9.1"))
-	testImplementation("org.junit.jupiter:junit-jupiter-engine")
+	testImplementation(libs.kotlinTestJunit)
+	testImplementation(platform(libs.junitBom))
+	testImplementation(libs.junitJupiter)
 }
