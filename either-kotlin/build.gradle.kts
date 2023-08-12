@@ -17,8 +17,6 @@ kotlin {
 }
 
 dependencies {
-	implementation(kotlin("stdlib"))
-
 	testImplementation(libs.kotlinTestJunit)
 	testImplementation(platform(libs.junitBom))
 	testImplementation(libs.junitJupiter)
