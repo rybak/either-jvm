@@ -5,7 +5,7 @@ plugins {
 	id("either-jvm-build.maven-publish-conventions")
 }
 
-version = "0.2-SNAPSHOT"
+version = "0.3-SNAPSHOT"
 description = "Type Either for Java 8+"
 
 java {
