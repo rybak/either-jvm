@@ -11,6 +11,8 @@
     * [ ] Add stagingProfileId to build script
 - Add .idea/logo.png
     > Just for fun! There's already a local branch with a design
+- Gradle: kotlin 1.9.0
+    > Upgrade to Gradle Kotlin plugin version 1.9.0
 - Foldable impl
     > https://hackage.haskell.org/package/base-4.15.0.0/docs/src/Data-Foldable.html#Foldable
 - Use switch-pattern-matching in either-java17 (preview feature)
@@ -52,7 +54,6 @@
 
 ## Doing
 
-- Use Gradle Version Catalog
 - add code samples
     * [ ] code samples in README
     * [x] code samples as separate subproject
@@ -134,3 +135,4 @@
     * [x] Clean up publishing code
     * [x] Test publishing again
     * [x] merge to 'main'
+- Use Gradle Version Catalog
