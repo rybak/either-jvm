@@ -53,6 +53,8 @@
     * [ ] https://img.shields.io/maven-metadata/v.svg?label=MavenCentral&metadataUrl=https%3A%2F%2Frepo1.maven.org%2Fmaven2%2Fdev%2Fandrybak%2Feither-jvm%2Feither-java8%2Fmaven-metadata.xml
 - Add Scala implementation
 - Add Groovy implementation
+- a meme
+    > https://twitter.com/ThePrimeagen/status/1696941040115101881
 
 ## Doing
 
