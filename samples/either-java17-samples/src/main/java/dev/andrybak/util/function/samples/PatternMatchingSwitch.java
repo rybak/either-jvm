@@ -15,12 +15,20 @@ public class PatternMatchingSwitch {
 				Either.right(42)
 		);
 		xs.forEach(x -> {
+			/*
+			 * How to use method `match` of class `Either` to pattern match between alternatives.
+			 */
 			String matchRes = x.match(
 					s -> "String: " + s,
 					i -> "Int: " + i
 			);
-			// FIXME: will break because of package-private :-/
-			// TODO: re-think if package-private is actually needed
+			/*
+			 * Add explicit types to lambda parameters to make the code clearer, if needed.
+			 */
+			String explicitLambdaParameters = x.match(
+					(String s) -> "Explicitly typed String: " + s,
+					(Integer i) -> "Explicitly typed Int: " + i
+			);
 			/*
 			 * This is only available in Java 21 (or in preview in Java 17)
 			 */
@@ -29,6 +37,7 @@ public class PatternMatchingSwitch {
 				case Right<String, Integer> right -> "Int: " + right.b();
 			};
 			System.out.println(matchRes);
+			System.out.println(explicitLambdaParameters);
 			System.out.println(switchRes);
 		});
 	}

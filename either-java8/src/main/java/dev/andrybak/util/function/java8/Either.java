@@ -153,7 +153,7 @@ public abstract class Either<A, B> implements Serializable {
 	 * @param <A> type of the value in this {@link Left}
 	 * @param <B> type of the value in the corresponding {@link Right}
 	 */
-	static final class Left<A, B> extends Either<A, B> {
+	public static final class Left<A, B> extends Either<A, B> {
 		/**
 		 * The value of this {@link Left}.
 		 */
@@ -214,7 +214,7 @@ public abstract class Either<A, B> implements Serializable {
 	 * @param <A> type of the value in the corresponding {@link Left}
 	 * @param <B> type of the value in this {@link Right}
 	 */
-	static final class Right<A, B> extends Either<A, B> {
+	public static final class Right<A, B> extends Either<A, B> {
 		/**
 		 * The value of this {@link Right}.
 		 */
