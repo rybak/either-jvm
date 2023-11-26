@@ -178,6 +178,13 @@ public abstract class Either<A, B> implements Serializable {
 			return this;
 		}
 
+		/**
+		 * Indicates whether some other object is "equal to" this {@code Left}.  The other object is considered equal
+		 * if it is also a {@code Left} and their values are "equal to" each other via {@code equals()}.
+		 *
+		 * @param o an object to be tested for equality
+		 * @return {code true} if the other object is "equal to" this object otherwise {@code false}
+		 */
 		@Override
 		public boolean equals(Object o) {
 			if (this == o)
@@ -233,6 +240,13 @@ public abstract class Either<A, B> implements Serializable {
 			return this;
 		}
 
+		/**
+		 * Indicates whether some other object is "equal to" this {@code Right}.  The other object is considered equal
+		 * if it is also a {@code Right} and their values are "equal to" each other via {@code equals()}.
+		 *
+		 * @param o an object to be tested for equality
+		 * @return {@code true} if the other object is "equal to" this object otherwise {@code false}
+		 */
 		@Override
 		public boolean equals(Object o) {
 			if (this == o)
