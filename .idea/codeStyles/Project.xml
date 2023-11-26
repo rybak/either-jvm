@@ -22,6 +22,7 @@
       <option name="LAMBDA_BRACE_STYLE" value="5" />
       <option name="ALIGN_MULTILINE_PARAMETERS" value="false" />
       <option name="METHOD_PARAMETERS_WRAP" value="1" />
+      <option name="KEEP_SIMPLE_CLASSES_IN_ONE_LINE" value="true" />
       <option name="KEEP_MULTIPLE_EXPRESSIONS_IN_ONE_LINE" value="true" />
       <option name="WRAP_LONG_LINES" value="true" />
       <option name="WRAP_ON_TYPING" value="1" />

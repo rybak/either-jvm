@@ -18,6 +18,11 @@ subdir("samples") {
 	subproject("either-kotlin-samples")
 }
 
+subdir("gson") {
+	subproject("either-java8-gson")
+	subproject("either-java17-gson")
+}
+
 class DirScope(private val dirPath: String) {
 	fun subproject(projectName: String) {
 		include(projectName)
